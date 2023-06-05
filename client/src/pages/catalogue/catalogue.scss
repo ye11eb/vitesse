@@ -1,0 +1,176 @@
+$secondFont: 'Neutral Face', sans-serif;
+$mainFont: 'Montserrat', sans-serif;
+
+.catalogue{
+    .catalogue_top{
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        .filterWrapper{
+            width: 100%;
+        }
+
+        .filterInner{
+            width: 200px;
+        }
+
+        .contacts_logo{
+            p{
+                margin-top: 40px;
+                font-family: $mainFont;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 40px;
+                line-height: 42px;
+                color: #000000;
+                background: white;
+            }
+        }
+
+        .toFilter_box{
+            // padding: 20px 0;
+            display: flex;
+            width: 100%;
+            cursor: pointer;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-direction: row;
+            p{
+                font-family: $mainFont;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 29px;
+                letter-spacing: 0.015em;
+                text-transform: uppercase;
+                color: #000000;
+            }
+        }
+    }
+    .productsWrapper{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        .card_wrapper{
+            width: 372px;
+            height: 554px;
+        }
+        .catalogueImg{
+            width: 372px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 554px;
+            // img{
+            //     object-fit: contain;
+            // }
+        }
+        
+        .more_wrapper{
+            width: 372px;
+            height: 554px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .more{
+                width: 100%;
+                justify-content: center;
+                .arrow_more{
+                    position: absolute;
+                    top: 81px;
+                    transform: rotate(90deg);
+                    left: 135px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:1200px) {
+    .catalogue{
+        .productsWrapper{
+            justify-content: space-evenly;
+        }
+    }
+
+    .catalogue_top{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        .contacts_logo{
+            p{
+                font-family: $mainFont;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 24px;
+                color: #000000;
+                background: white;
+            }
+            img{
+                width: 165px;
+                height: 116px;
+            }
+        }
+
+        .toFilter_box{
+            padding: 20px 0;
+            display: flex;
+            width: 100%;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-direction: row;
+            p{
+                font-family: $mainFont;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 14px;
+                letter-spacing: 0.015em;
+                text-transform: uppercase;
+                color: #000000;
+            }
+        }
+    }
+}
+
+@media (max-width:600px) {
+    .catalogue{
+        .catalogue_top{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+
+            .contacts_logo{
+                p{
+                    font-family: $mainFont;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 22px;
+                    line-height: 24px;
+                    color: #000000;
+                    background: white;
+                }
+                img{
+                    width: 166px;
+                    height: 98px;
+                }
+            }
+
+            .toFilter_box{
+                width: 100%;
+                align-items: flex-end;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+        }
+    }
+}

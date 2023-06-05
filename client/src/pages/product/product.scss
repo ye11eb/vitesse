@@ -1,0 +1,563 @@
+$secondFont: 'Neutral Face', sans-serif;
+$mainFont: 'Montserrat', sans-serif;
+
+.product{
+    .product_top{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 40px;
+
+        & > div{
+            width: 100%;
+        }
+
+        .product_top_imgs{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            .img{
+                display: flex;
+                flex-direction: column;
+                height: 554px;
+                justify-content: space-between;
+                img{
+                    width: 120px;
+                    height: 178px;
+                    border: 0.567361px solid #000000;
+                    transition: all .3s;
+                    &:hover{
+                        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                    }
+                }
+            }
+            .pickedImg {
+                position: relative;
+                .prodImg{
+                border: 0.567361px solid #000000;
+                width: 372px;
+                height: 554px;
+                }
+                .like_btn{
+                    position: absolute;
+                    top: 5%;
+                    right: 5%;
+                    height: 40px;
+                    width: 40px;
+                    transition: all .3s;
+                    background-image: url('../../../public/img/like_button.svg');
+                }
+            
+                .like_btn_red{
+                    position: absolute;
+                    top: 5%;
+                    right: 5%;
+                    height: 40px;
+                    width: 40px;
+                    transition: all .3s;
+                    background-image: url('../../../public/img/like_button_liked.svg');
+                }
+            
+                .like_btn_red_anim{
+                    animation: heartAinim .5s;
+                    position: absolute;
+                    top: 5%;
+                    right: 5%;
+                    height: 40px;
+                    width: 40px;
+                    transition: all .3s;
+                    background-image: url('../../../public/img/like_button_liked.svg')
+                }
+            
+                @keyframes heartAinim {
+                    0%{
+                        background-image: url('../../../public/img/like_button.svg')
+                    }
+                    100%{
+                        background-image: url('../../../public/img/like_button_liked.svg')
+                    }
+                    
+                }
+            }
+        }
+
+        .product_top_text{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            h1{
+                font-family: $mainFont;
+                font-weight: 400;
+                font-size: 34px;
+                color: #000000;
+                // text-transform: uppercase;
+                margin-block-start: 0em !important;
+                margin-block-end: 0em !important;
+            }
+            > p{
+                font-family: $mainFont;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 24px;
+                letter-spacing: 0.015em;
+                font-variant: small-caps;
+
+                color: #000000;
+            }
+
+            .options{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 30px;
+                p{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    font-family: $mainFont;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 24px;
+                    letter-spacing: 0.015em;
+                    font-variant: small-caps;
+                    color: #000000;
+                    .toPickRound{
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 0.2px solid #c4c4c4;
+                        transition: all .3s;
+                        background-color: transparent;
+                        margin-right: 7px;
+                    }
+                }
+                .picked{
+                    .toPickRound{
+                        background-color: #000000;
+                    }
+                }
+            }
+
+            .price{
+                font-family: $mainFont;
+                font-weight: 400;
+                font-size: 28px;
+                line-height: 34px;
+                letter-spacing: 0.015em;
+                font-variant: small-caps;
+            }
+
+            .btn{
+                width: 365px;
+                height: 66px
+            }
+        }
+    }
+
+    .product_bottom{
+        display: flex;
+        flex-direction: row;
+        margin: 160px 0;
+        justify-content: space-between;
+        &>*{
+            width: 50%;
+        }
+
+        > img {
+            width: 517px;
+            height: 657px;
+        }
+
+        &>ul{
+            padding-inline-start: 0px;
+            margin: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            & > div {
+                width: 100%;
+                & > li {
+                    width: 100%;
+                    & > div{
+                        // align-items: start;
+                        // justify-content: start;
+                        // justify-items: start;
+                        p{
+                            width: 100%;
+                        }
+                    }
+                }
+               
+            }
+        }
+
+        li{
+            & > div{
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: space-between;
+                & > p{
+                font-family: $mainFont;
+                font-weight: 500;
+                font-size: 24px;
+                line-height: 29px;
+                letter-spacing: 0.015em;
+                text-transform: uppercase;
+                color: #000000;
+                margin-top: 25px;
+            }
+
+            .arrow_questions{
+                width: 29px;
+                height: 29px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                position: relative;
+                .line{
+                    position: absolute;
+                    top: 14px;
+                    transition: all .3s;
+                    width: 29px;
+                    transform: rotate(0deg);
+                    height: 1px;
+                    background-color:#000000;
+                }
+                .secondLine{
+                    transform: rotate(0deg);
+                }
+            }
+            .arrow_questions_closed{
+                .secondLine{
+                    transform: rotate(90deg);
+                }
+            }
+            }
+            .outline{                 
+                height: 1px;
+                width: 100%;
+                margin-top: 10px;
+                background-color: #000000;
+            }
+
+            .dropDownList_text{
+                flex-direction: column;
+                transition: all .3s;
+                max-height: 300px;
+                overflow: hidden;
+                & > p {                  
+                    font-family: $mainFont;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 20px;
+                    letter-spacing: 0.015em;
+                    text-transform: uppercase;
+                    color: #000000;
+                    margin: 25px 0;
+                }
+            }
+
+            .dropDownList_closed{
+                max-height: 0px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .page{
+        margin: 50px 0 0 0;
+    }
+
+    .product{
+        padding: 0 5%;
+        max-width: 900px;
+        .product_top{
+            margin-top: 40px;
+    
+            & > div{
+                width: 100%;
+            }
+    
+            .product_top_imgs{
+                .img{
+                    height: 314px;
+                    img{
+                        width: 68px;
+                        height: 100px;
+                        &:hover{
+                            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                        }
+                    }
+                }
+                .pickedImg {
+                    .prodImg{
+                    width: 211px;
+                    height: 314px;
+                    }
+                    .like_btn{
+                        width: 18px;
+                        height: 18px;
+                    }
+                }
+            }
+    
+            .product_top_text{
+                h1{
+                    font-size: 19px;
+                }
+                > p{
+                    font-size: 11px;
+                    line-height: 14px;
+                }
+    
+                .options{
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    gap: 30px;
+                    p{
+                        font-size: 11px;
+                        line-height: 14px;
+                        .toPickRound{
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            border: 0.2px solid #c4c4c4;
+                            transition: all .3s;
+                            background-color: transparent;
+                            margin-right: 7px;
+                        }
+                    }
+                    .picked{
+                        .toPickRound{
+                            background-color: #000000;
+                        }
+                    }
+                }
+    
+                .price{
+                    font-family: $mainFont;
+                    font-weight: 400;
+                    font-size: 15px;
+                    line-height: 19px;
+                    letter-spacing: 0.015em;
+                    font-variant: small-caps;
+                }
+    
+                .btn{
+                    width: 207.27px;
+                    height: 37.83px;
+                }
+            }
+        }
+    
+        .product_bottom{
+            margin: 90px 0;
+            &>*{
+                width: 50%;
+            }
+    
+            > img {
+                width: 293.33px;
+                height: 372.76px;
+            }
+    
+            li{
+                & > div{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    & > p{
+                        font-size: 14px;
+                        line-height: 16px;
+                        margin-top: 25px;
+                    }
+        
+                    .arrow_questions{
+                        width: 29px;
+                        height: 29px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: flex-end;
+                        position: relative;
+                        .line{
+                            position: absolute;
+                            top: 22px;
+                            transition: all .3s;
+                            width: 16px;
+                            transform: rotate(0deg);
+                            height: 1px;
+                            background-color:#000000;
+                        }
+                        .secondLine{
+                            transform: rotate(0deg);
+                        }
+                    }
+                    .arrow_questions_closed{
+                        .secondLine{
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+                .outline{                 
+                    height: 1px;
+                    width: 100%;
+                    margin-top: 10px;
+                }
+    
+                .dropDownList_text{
+                    & > p {                  
+                        font-size: 9px;
+                        line-height: 11px;
+                        margin: 5px 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
+    .page{
+        margin: 80px 0 0 0;
+    }
+    .product{
+        .product_top{
+            flex-direction: column;
+            margin-top: 40px;
+    
+            & > div{
+                width: 100%;
+            }
+    
+            .product_top_imgs{
+                gap: 10px;
+                .img{
+                    height: 298px;
+                    img{
+                        width: 84px;
+                        height: 96px;
+                        &:hover{
+                            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+                        }
+                    }
+                }
+                .pickedImg {
+                    .prodImg{
+                    width: 199px;
+                    height: 298px;
+                    }
+                    .like_btn{
+                        position: absolute;
+                        top: 2%;
+                        right: 4%;
+                        width: 14px;
+                        height: 14px;
+                    }
+                }
+            }
+    
+            .product_top_text{
+                height: 300px;
+                h1{
+                    font-size: 22px;
+                    padding-top: 20px;
+                }
+                > p{
+                    font-size: 12px;
+                    line-height: 14px;
+                }
+
+                .capacity_wrapper{
+                    display: flex;
+                    flex-direction: row;
+                    gap: 33px;
+                    p{
+                        font-family: 'Montserrat';
+                        font-weight: 400;
+                        font-size: 11px;
+                        line-height: 13px;
+                        letter-spacing: 0.015em;
+                        font-variant: small-caps;
+                    }
+                }
+    
+                .options{
+                    gap: 20px;
+                    p{
+                        font-size: 11px;
+                        line-height: 13px;
+                        .toPickRound{
+                            width: 11px;
+                            height: 11px;
+                            margin-right: 4px;
+                        }
+                    }
+                }
+    
+                .btn{
+                    width: 206px;
+                    height: 38px;
+                }
+            }
+        }
+    
+        .product_bottom{
+            flex-direction: column-reverse;
+            margin: 50px 0;
+            align-items: center;
+            &>*{
+                width: 100%;
+            }
+    
+            > img {
+                width: 90%;
+                height: 100%;
+                // height: 373px;
+            }
+    
+            li{
+                & > div{
+                    display: flex;
+                    flex-direction:row;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    & > p{
+                        font-family: $mainFont;
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 17px;
+                        letter-spacing: 0.015em;
+                        text-transform: uppercase;
+                        color: #000000;
+                        margin-top: 25px;
+                     }
+    
+                    .arrow_questions{
+                        .line{
+                            top: 20px;
+                            width: 13px;
+                        }
+                    }
+                }
+    
+                .dropDownList_text{
+                    & > p {                  
+                        font-size: 12px;
+                        line-height: 15px;
+                    }
+                }
+    
+            }
+        }
+    }
+}

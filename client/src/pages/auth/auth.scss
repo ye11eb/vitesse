@@ -1,0 +1,615 @@
+.auth_wrapper{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 100px 0;
+  background: #1E1E1E;
+  p,label{
+    color: #6B6B6B;
+  }
+  .auth{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    h1{
+      font-family: 'Montserrat';
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 29px;
+      letter-spacing: 0.015em;
+      color: #fff;
+    }
+
+    .btn{
+      width: 326px;
+      border: 1px solid #FFFFFF;
+      p{
+        color: #FFFFFF;
+      }
+    }
+
+
+    .inputs{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      height: 100%;
+    }
+    .inputbox{
+      overflow: hidden;
+      position: relative;
+      padding: 15px 0 9px 0px;
+      margin: 0;
+      &-title{
+        position: absolute;
+        top:15px;
+        left: 0;
+        width: 200px;
+        height: 30px;
+        color: #666;
+        font-weight: bold;
+        line-height: 30px;
+      }
+      &-content{
+        user-select: none;
+        cursor: pointer;
+        position: relative;
+        width: 100%;
+        margin: 0;
+        font-size: 24px;
+        font-family: 'Montserrat';
+        input{
+          width: 100%;
+          height: 30px;
+          box-sizing: border-box;
+          line-height: 30px;
+          font-size:24px;
+          border:0;
+          background: none;
+          border-bottom:1px solid #ccc;
+          outline:none;
+          font-family: 'Montserrat';
+          border-radius: 0;
+          color: #fff;
+          appearance: none;
+          &:focus,&:valid{
+            &~label{
+              color: rgb(103, 186, 255);
+              transform: translateY(-20px);
+              font-size:0.825em;
+              cursor:default;
+            }
+          }
+          &:focus{
+            &~.underline{
+              width: 100%;
+            }
+          }
+        }
+        label{
+          position: absolute;
+          top:0;
+          left:0;
+          height: 30px;
+          line-height: 30px;
+          color:#ccc;
+          cursor:text;
+          transition: all 200ms ease-out;
+          z-index:10;
+        }
+        .underline{
+          content:'';
+          display: block;
+          position: absolute;
+          bottom:-1px;
+          left:0;
+          width: 0;
+          height: 2px;
+          background: rgb(103, 186, 255);
+          transition: all 200ms ease-out;
+        }
+      }
+    }
+
+    .remember_me{
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      position: relative;
+      .checkbox{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        outline: 1px solid #c4c4c4;
+        transition: all 0.3s;
+        background-color: transparent;
+        margin-right: 7px;
+        background: transparent;
+      }
+
+      p{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.015em;
+        font-variant: small-caps;
+        color: #FFFFFF;
+      }
+
+      .checked{
+        background: url('../../../public/img/checkBox_checked.svg');
+        // border: 1px solid transparent
+      }
+    }
+
+    .refToRegister{
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0.015em;
+      font-variant: small-caps;
+      color: #fff;
+      a{
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+  }
+  .line_logo{
+    height: 100%;
+    width: 1px;
+    background: #fff;
+  }
+  .img{
+    width: 465px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register{
+    .inputs{
+      >.inputbox,.input_password{
+        width: 444px;
+      }
+      >p{
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 0.015em;
+        text-transform: uppercase;
+        width: 368px;
+      }
+      .inputsWrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .inputbox{
+        margin-right: 20px;
+      }
+      .input_password{
+        position: relative;
+        .inputbox{
+          margin-right: 0px;
+        }
+        .eyeBox{
+          position: absolute;
+          top: 0;
+          right: 0;
+          .croshair_box{
+            position: relative;
+            top: -23px;
+            left: 1px;
+            .line{
+              background-color: #6B6B6B;
+              width: 30px;
+              transition: all .2s;
+              height: 1px;
+              transform: rotate(-45deg);
+            }
+            .line_unVisible{
+              background-color: transparent ;
+              width: 30px;
+              transition: all .2s;
+              height: 1px;
+              transform: rotate(-45deg);
+            }
+          }
+        }
+        p{
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 20px;
+          letter-spacing: 0.015em;
+          margin-top: 15px;
+          font-variant: small-caps;
+        }
+      }
+      .remember_me{
+        margin: 0 0 30px 0;
+      }
+    }
+  }
+
+  .registerSecondPart{
+    display: flex;
+  }
+}
+
+@media (max-width: 1200px) {
+  .auth_wrapper{
+    p,label{
+      color: #6B6B6B;
+    }
+    .auth{
+      padding: 0 5%;
+      h1{
+        font-size: 14px;
+        line-height: 16px;
+      }
+  
+      .btn{
+        width: 185px;
+        height: 31px;
+        p{
+          color: #FFFFFF;
+          font-size: 11px;
+          line-height: 14px;
+        }
+      }
+  
+  
+      .inputs{
+        width: 100%;
+      }
+      
+      .inputbox{
+        margin-top: 10px;
+        &-title{
+          width: 200px;
+          height: 20px;
+          line-height: 30px;
+        }
+        &-content{
+          width:100%;
+          margin: 0;
+          font-size: 14px;
+          input{
+            width: 100%;
+            height: 20px;
+            line-height: 30px;
+            font-size:14px;
+          }
+          label{
+            font-size: 10px;
+            line-height: 20px;
+          }
+        }
+      }
+    
+      .radioBox{
+        width: 80%;
+        margin-top: 0px;
+        .radioButtonsWrapper{
+            .radioButtonWrapper{
+                margin-bottom: 14px;
+                .checkbox{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 4px;
+                  }
+            
+                  p{
+                    font-size: 10px;
+                    line-height: 14px;
+                  }
+            }
+      
+        }
+      }
+  
+      .remember_me{
+        .checkbox{
+          width: 12px;
+          height: 12px;
+        }
+  
+        p{
+          font-size: 9.1px;
+          line-height: 11px;
+        }
+  
+        .checked{
+          background-size: cover;
+        }
+      }
+  
+      .refToRegister{
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+    .line_logo{
+      height: 100%;
+      width: 1px;
+      background: #fff;
+    }
+    .img{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        height: 286px;
+      }
+    }
+    
+  
+    .register{
+      .inputs{
+        >.inputbox,.input_password{
+          width: 444px;
+        }
+        >p{
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 12px;
+          letter-spacing: 0.015em;
+          text-transform: uppercase;
+          width: 368px;
+        }
+        .inputsWrapper{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        .inputbox{
+          margin-right: 20px;
+        }
+        .input_password{
+          position: relative;
+          .inputbox{
+            margin-right: 0px;
+          }
+          .eyeBox{
+            top: -10px;
+            width: 32px;
+            height: 10px;
+            
+            .croshair_box{
+              position: relative;
+              top: -23px;
+              left: 1px;
+              .line{
+                background-color: #6B6B6B;
+                width: 30px;
+                transition: all .2s;
+                height: 1px;
+                transform: rotate(-45deg);
+              }
+              .line_unVisible{
+                background-color: transparent ;
+                width: 30px;
+                transition: all .2s;
+                height: 1px;
+                transform: rotate(-45deg);
+              }
+            }
+          }
+          p{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.015em;
+            margin-top: 15px;
+            font-variant: small-caps;
+          }
+        }
+        .remember_me{
+          margin: 0 0 30px 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .auth_wrapper{
+    .auth{
+      width: 100%;
+      padding: 0 5%;
+      h1{
+        font-size: 15px;
+        line-height: 18px;
+      }
+      .btn{
+        width: 200px;
+        height: 31px;
+        p{
+          color: #FFFFFF;
+          font-size: 11px;
+          line-height: 12px
+        }
+      }
+
+      .input_part {
+        width: 100%;
+      }
+  
+  
+      .inputs{
+        width: 100%;
+        height: 260px;
+      }
+      
+      .inputbox{
+        margin-top: 10px;
+        &-title{
+          width: 200px;
+          height: 20px;
+          line-height: 30px;
+        }
+        &-content{
+          width:100%;
+          margin: 0;
+          font-size: 14px;
+          input{
+            width: 100%;
+            height: 20px;
+            line-height: 30px;
+            font-size:14px;
+          }
+          label{
+            font-size: 10px;
+            line-height: 20px;
+          }
+        }
+      }
+    
+      .radioBox{
+        width: 80%;
+        margin-top: 0px;
+        .radioButtonsWrapper{
+            .radioButtonWrapper{
+                margin-bottom: 14px;
+                .checkbox{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 4px;
+                  }
+            
+                  p{
+                    font-size: 10px;
+                    line-height: 14px;
+                  }
+            }
+      
+        }
+      }
+  
+      .remember_me{
+        .checkbox{
+          width: 12px;
+          height: 12px;
+        }
+  
+        p{
+          font-size: 9.1px;
+          line-height: 11px;
+        }
+  
+        .checked{
+          background-size: cover;
+        }
+      }
+  
+      .refToRegister{
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+    .line_logo{
+      height: 100%;
+      width: 1px;
+      background: #fff;
+    }
+    .img{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        height: 286px;
+      }
+    }
+  
+    .register{
+      .inputs{
+        height:  100%;
+        >.inputbox,.input_password{
+          width: 100%;
+        }
+        >p{
+          font-family: 'Montserrat';
+          font-style: normal;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 12px;
+          letter-spacing: 0.015em;
+          text-transform: uppercase;
+          width: 368px;
+        }
+        .inputsWrapper{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 20px;
+        }
+        .inputbox{
+          margin-right: 0px;
+          width: 45%;
+        }
+        .input_password{
+          position: relative;
+          .inputbox{
+            margin-right: 0px;
+          }
+          .eyeBox{
+            top: -1px;
+            width: 21px;
+            img{
+              width: 20px;
+            }
+            .croshair_box{
+              position: relative;
+              top: -16px;
+              left: 1px;
+              .line{
+                background-color: #6B6B6B;
+                width: 20px;
+                transition: all .2s;
+                height: 1px;
+                transform: rotate(-45deg);
+              }
+              .line_unVisible{
+                background-color: transparent ;
+                width: 30px;
+                transition: all .2s;
+                height: 1px;
+                transform: rotate(-45deg);
+              }
+            }
+          }
+          p{
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.015em;
+            margin-top: 15px;
+            font-variant: small-caps;
+          }
+        }
+        .remember_me{
+          margin: 0 0 30px 0;
+        }
+      }
+    }
+  }
+}
+    

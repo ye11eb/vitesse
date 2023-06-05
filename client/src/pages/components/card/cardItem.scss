@@ -1,0 +1,96 @@
+$secondFont: 'Neutral Face', sans-serif;
+$mainFont: 'Montserrat', sans-serif;
+
+.card_wrapper{
+    width: 372px;
+    height: 553px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 50px 0;
+    align-items: center;
+    border: 1px solid #000000;
+    img{
+        background-color:#f9e4e4;
+        width: 44%;
+        height: 70%;
+    }
+    .like_btn{
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        height: 40px;
+        width: 40px;
+        transition: all .3s;
+        background-image: url('../../../../public/img/like_button.svg');
+    }
+
+    .like_btn_red{
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        height: 40px;
+        width: 40px;
+        transition: all .3s;
+        background-image: url('../../../../public/img/like_button_liked.svg');
+    }
+
+    .like_btn_red_anim{
+        animation: heartAinim .5s;
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        height: 40px;
+        width: 40px;
+        transition: all .3s;
+        background-image: url('../../../../public/img/like_button_liked.svg')
+    }
+
+    @keyframes heartAinim {
+        0%{
+            background-image: url('../../../../public/img/like_button.svg')
+        }
+        100%{
+            background-image: url('../../../../public/img/like_button_liked.svg')
+        }
+        
+    }
+
+    .dellete_btn{
+        position: absolute;
+        top: 5%;
+        left: 5%;
+    }
+
+    h2{
+        font-family: $mainFont;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.015em;
+        text-transform: uppercase;
+        font-variant: small-caps;
+    }
+
+    & > span, p{
+        font-family: $mainFont;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0.015em;
+        font-variant: small-caps;
+    }
+
+    .btn{
+        width: 204px;
+        margin-top: 20px;
+    }
+}
+
+
+@media (max-width: 372px) {
+    .card_wrapper{
+        width: 100%;
+    }
+}

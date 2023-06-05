@@ -1,0 +1,100 @@
+$secondFont: 'Neutral Face', sans-serif;
+$mainFont: 'Montserrat', sans-serif;
+
+
+.footer{
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 280px;
+    .refs{
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        p{
+            cursor: pointer;
+            font-family: $mainFont;
+            font-weight: 500;
+            font-size: 16px;
+        }
+    }
+
+    .footer_bottom_box{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding-bottom: 20px;
+        a{
+            cursor: pointer;
+            font-family: $mainFont;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            letter-spacing: 0.015em;
+            font-variant: small-caps;
+            color: #000000;   
+        }
+        div{
+            width: 100px;
+            display: flex;
+            justify-content: space-between;
+            img{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .footer{
+        width: 90%;
+        height: 160px;
+        .logo{
+            width: 72.21px;
+            height: 52.31px;
+            img{
+                width: 72.21px;
+                height: 52.31px;
+            }
+        }
+        .refs{
+            width: 80%;
+            justify-content: space-evenly;
+            p{
+                font-size: 12px;
+            }
+        }
+    
+        .footer_bottom_box{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            padding-bottom: 20px;
+            a{
+                cursor: pointer;
+                font-family: $mainFont;
+                font-weight: 500;
+                font-size: 11px;
+                line-height: 13px;
+                letter-spacing: 0.015em;
+                font-variant: small-caps;
+                color: #000000;   
+            }
+            div{
+                width: 50px;
+                display: flex;
+                justify-content: space-between;
+                img{
+                    cursor: pointer;
+                    width: 19px;
+                    height: 19px;
+                }
+            }
+        }
+    }
+}
