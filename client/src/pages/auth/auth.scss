@@ -2,17 +2,19 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 100px 0;
+  padding: 80px 0;
   background: #1E1E1E;
   p,label{
     color: #6B6B6B;
+  }
+  .login_authPage{
+    height: 502px;
   }
   .auth{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     h1{
-      font-family: 'Montserrat';
       font-weight: 500;
       font-size: 24px;
       line-height: 29px;
@@ -28,12 +30,39 @@
       }
     }
 
+    .login{
+      .inputs{
+        width: 450px;
+      }
+    }
 
     .inputs{
       display: flex;
       justify-content: space-between;
       flex-direction: column;
       height: 100%;
+      &>p{
+        margin: 20px 0;
+      }
+      &>h1:nth-child(3) {
+        margin: 10px 0;
+      }
+      &>h1:last-of-type {
+        margin: 20px 0;
+      }
+    }
+    .longer{
+      width: 100% !important;
+      .inputbox-content{
+        width: calc(100% - 100px);
+        select{
+          font-size: 24px;
+          color: #fff;
+          option{
+            color: black;
+          }
+        }
+      }
     }
     .inputbox{
       overflow: hidden;
@@ -57,7 +86,6 @@
         width: 100%;
         margin: 0;
         font-size: 24px;
-        font-family: 'Montserrat';
         input{
           width: 100%;
           height: 30px;
@@ -68,7 +96,6 @@
           background: none;
           border-bottom:1px solid #ccc;
           outline:none;
-          font-family: 'Montserrat';
           border-radius: 0;
           color: #fff;
           appearance: none;
@@ -128,13 +155,12 @@
       }
 
       p{
-        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
         letter-spacing: 0.015em;
-        font-variant: small-caps;
+        font-variant: all-petite-caps;
         color: #FFFFFF;
       }
 
@@ -145,13 +171,12 @@
     }
 
     .refToRegister{
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 400;
       font-size: 18px;
       line-height: 22px;
       letter-spacing: 0.015em;
-      font-variant: small-caps;
+      font-variant: all-petite-caps;
       color: #fff;
       a{
         color: #fff;
@@ -171,13 +196,113 @@
     align-items: center;
   }
 
+  .select {
+    position: relative;
+    background: transparent;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+  
+    label{
+      color: rgb(103, 186, 255) !important;
+      transform: translateY(-20px) !important;
+      font-size:0.825em !important;
+      cursor:default;
+    }
+  
+    svg {
+      position: absolute;
+      right: 12px;
+      top: calc(50% - 3px);
+      width: 10px;
+      height: 6px;
+      stroke-width: 2px;
+      stroke: #9098A9;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
+    }
+  
+    select {
+      appearance: none;
+      margin-top: 5px;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      border-radius: 0px;
+      background: transparent;
+      // box-shadow: 0 1px 3px -2px #9098A9;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all 150ms ease;
+  
+      &:required:invalid {
+        color: #5A667F;
+      }
+  
+      option {
+        // color: #223254;
+  
+        &[value=""][disabled] {
+          display: none;
+        }
+      }
+  
+      &:focus {
+        outline: none;
+        // border-color: #0077FF;
+        // box-shadow: 0 0 0 2px rgba(#0077FF,.2);
+      }
+  
+      &:hover + svg {
+        stroke: #0077FF;
+      }
+  
+      &:focus{
+        &~.underline{
+          width: 100%;
+        }
+      }
+      // &:focus {
+      //   outline: none;
+      //   border-color: #0077FF;
+      //   box-shadow: 0 0 0 2px rgba(#0077FF,.2);
+      // }
+  
+      &:hover + svg {
+        stroke: #0077FF;
+      }
+  
+      &::-ms-expand {
+        display: none; // Remove border for Internet Explorer
+      }
+  
+      &::-webkit-scrollbar {
+        display: none; // Remove border for other browsers
+      }
+    }
+    .underline{
+      content:'';
+      display: block;
+      position: absolute;
+      bottom:17px;
+      left:0;
+      z-index: 10;
+      width: 0;
+      height: 2px;
+      background: rgb(103, 186, 255);
+      transition: all 200ms ease-out;
+    }
+  
+  }
+
   .register{
     .inputs{
       >.inputbox,.input_password{
         width: 444px;
       }
       >p{
-        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 500;
         font-size: 10px;
@@ -225,14 +350,13 @@
           }
         }
         p{
-          font-family: 'Montserrat';
           font-style: normal;
           font-weight: 400;
           font-size: 16px;
           line-height: 20px;
           letter-spacing: 0.015em;
           margin-top: 15px;
-          font-variant: small-caps;
+          font-variant: all-petite-caps;
         }
       }
       .remember_me{
@@ -268,7 +392,15 @@
         }
       }
   
-  
+      .longer{
+        width: 100% !important;
+        .inputbox-content{
+            width: 374px;
+            select{
+              font-size: 14px;
+            }
+        }
+      }
       .inputs{
         width: 100%;
       }
@@ -360,7 +492,6 @@
           width: 444px;
         }
         >p{
-          font-family: 'Montserrat';
           font-style: normal;
           font-weight: 500;
           font-size: 10px;
@@ -409,14 +540,211 @@
             }
           }
           p{
-            font-family: 'Montserrat';
             font-style: normal;
             font-weight: 400;
             font-size: 16px;
             line-height: 20px;
             letter-spacing: 0.015em;
             margin-top: 15px;
-            font-variant: small-caps;
+            font-variant: all-petite-caps;
+          }
+        }
+        .remember_me{
+          margin: 0 0 30px 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .auth_wrapper{
+    p,label{
+      color: #6B6B6B;
+    }
+    .auth{
+      padding: 0 5%;
+      margin-top: 25px;
+      h1{
+        font-size: 14px;
+        line-height: 16px;
+      }
+
+      .input_part {
+        width: 100%;
+      }
+  
+      .btn{
+        width: 185px;
+        height: 31px;
+        p{
+          color: #FFFFFF;
+          font-size: 11px;
+          line-height: 14px;
+        }
+      }
+  
+      .longer{
+        width: 100% !important;
+        .inputbox-content{
+            width: 100%;
+        }
+      }
+
+      .input_password {
+        .inputbox{
+          width: 100%;
+        }
+      }
+      .inputs{
+        width: 100%;
+        gap: 10px;
+      }
+      
+      .inputbox{
+        margin-top: 10px;
+        width: 100%;
+        padding: 15px 0 20px 0px;
+        &-title{
+          height: 20px;
+          line-height: 30px;
+        }
+        &-content{
+          width:100%;
+          margin: 0;
+          font-size: 14px;
+          input{
+            width: 100%;
+            height: 20px;
+            line-height: 30px;
+            font-size:14px;
+          }
+          label{
+            font-size: 10px;
+            line-height: 20px;
+          }
+        }
+      }
+    
+      .radioBox{
+        width: 80%;
+        margin-top: 0px;
+        .radioButtonsWrapper{
+            .radioButtonWrapper{
+                margin-bottom: 14px;
+                .checkbox{
+                    width: 10px;
+                    height: 10px;
+                    margin-right: 4px;
+                  }
+            
+                  p{
+                    font-size: 10px;
+                    line-height: 14px;
+                  }
+            }
+      
+        }
+      }
+  
+      .remember_me{
+        .checkbox{
+          width: 12px;
+          height: 12px;
+        }
+  
+        p{
+          font-size: 9.1px;
+          line-height: 11px;
+        }
+  
+        .checked{
+          background-size: cover;
+        }
+      }
+  
+      .refToRegister{
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+    .line_logo{
+      height: 100%;
+      width: 1px;
+      background: #fff;
+    }
+    .img{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        height: 286px;
+      }
+    }
+    
+  
+    .register{
+      .inputs{
+        gap: 10px;
+        >.inputbox,.input_password{
+          width: 444px;
+        }
+        >p{
+          font-style: normal;
+          font-weight: 500;
+          font-size: 10px;
+          line-height: 12px;
+          letter-spacing: 0.015em;
+          text-transform: uppercase;
+          width: 368px;
+        }
+        .inputsWrapper{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 10%;
+        }
+        .inputbox{
+          margin-right: 0px;
+        }
+        .input_password{
+          position: relative;
+          .inputbox{
+            margin-right: 0px;
+          }
+          .eyeBox{
+            top: -10px;
+            width: 32px;
+            height: 10px;
+            
+            .croshair_box{
+              position: relative;
+              top: -23px;
+              left: 1px;
+              .line{
+                background-color: #6B6B6B;
+                width: 30px;
+                transition: all .2s;
+                height: 1px;
+                transform: rotate(-45deg);
+              }
+              .line_unVisible{
+                background-color: transparent ;
+                width: 30px;
+                transition: all .2s;
+                height: 1px;
+                transform: rotate(-45deg);
+              }
+            }
+          }
+          p{
+            font-style: normal;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 20px;
+            letter-spacing: 0.015em;
+            margin-top: 5px;
+            font-variant: all-petite-caps;
           }
         }
         .remember_me{
@@ -451,9 +779,15 @@
       }
   
   
-      .inputs{
-        width: 100%;
-        height: 260px;
+      // .inputs{
+      //   width: 100%;
+      //   height: 260px;
+      // }
+
+      .input_password {
+        .inputbox{
+          width: 100%;
+        }
       }
       
       .inputbox{
@@ -535,6 +869,12 @@
         height: 286px;
       }
     }
+
+    .input_password {
+      .inputbox{
+        width: 100% !important;
+      }
+    }
   
     .register{
       .inputs{
@@ -543,7 +883,6 @@
           width: 100%;
         }
         >p{
-          font-family: 'Montserrat';
           font-style: normal;
           font-weight: 500;
           font-size: 10px;
@@ -576,7 +915,7 @@
             }
             .croshair_box{
               position: relative;
-              top: -16px;
+              top: -14px;
               left: 1px;
               .line{
                 background-color: #6B6B6B;
@@ -595,14 +934,13 @@
             }
           }
           p{
-            font-family: 'Montserrat';
             font-style: normal;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 10px;
             line-height: 20px;
             letter-spacing: 0.015em;
-            margin-top: 15px;
-            font-variant: small-caps;
+            margin-top: 5px;
+            font-variant: all-petite-caps;
           }
         }
         .remember_me{

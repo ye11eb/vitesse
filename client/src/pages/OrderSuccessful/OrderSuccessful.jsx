@@ -6,12 +6,13 @@ import Axios from'../../utils/axios'
 import './OrderSuccessful.scss'
 import PageAnim from '../components/pageAnim/PageAnim'
 
-const OrderSuccessful = () => {
+const OrderSuccessful = ({ukrLang}) => {
     const location = useLocation()
     const [orderNum, setOrderNum] = useState('')
     const [result, setResult] = useState('')
     const [resultValue, setResultValue] = useState('')
     const [city, setCity] = useState('')
+    const [Region, setRegion] = useState('')
     const [postNum, setPostNum] = useState('')
     const [street, setStreet] = useState('')
     const [homeNumber, setHomeNumber] = useState('')
@@ -44,6 +45,7 @@ const OrderSuccessful = () => {
                 setOrderNum(reqId)
                 setResult(data.order.result)
                 setResultValue(data.order.priceValue)
+                setRegion(data.order.region)
                 setCity(data.order.city)
                 setPostNum(data.order.postNum)
                 setStreet(data.order.street)
@@ -63,28 +65,28 @@ const OrderSuccessful = () => {
     },[])
   return (
     <div className='OrederSuccess'>
-      <h1>Дякуємо, Ваше замовлення прийняте!</h1>
-      <h2>На ваш e-mail відправлено лист-підтвердження.</h2>
+      <h1>{ukrLang ? 'Дякуємо, Ваше замовлення прийняте!' : 'Thank you, your order has been received!'}</h1>
+      <h2>{ukrLang ? 'На ваш e-mail відправлено лист-підтвердження.' : 'A confirmation email has been sent to your email address.'}</h2>
       <div className="infoMainCotainer">
         <div className="first">
             <div>
                 <div>
-                    <p>Номер вашого замовлення:</p>
+                    <p>{ukrLang ? 'Номер вашого замовлення:' : 'Order number:'}</p>
                     <span>{orderNum}</span>
                 </div>
                 <div>
-                    <p>Сума:</p>
+                    <p>{ukrLang ? 'Сума:' : 'Amount:'}</p>
                     <span>{result} {resultValue}</span>
                 </div>
             </div>
         </div>
         <div className="second">
-            <p>Інформація замовлення:</p>
-            <p>Ваше замовлення буде доставлено за адресою:</p>
-            {postNum !== '' ? <p>{city}, {postNum}</p> : <p>{city}, {street} , {homeNumber}</p>}
-            <p>Номер телефону: <span>{number}</span></p>
+            <p>{ukrLang ? 'Інформація замовлення:' : 'Order Information:'}</p>
+            <p>{ukrLang ? 'Ваше замовлення буде доставлено за адресою:' : 'Your order will be delivered to the following address:'}</p>
+            {postNum !== '' ? <p>{Region}, {city}, {postNum}</p> : <p>{Region}, {city}, {street} , {homeNumber}</p>}
+            <p>{ukrLang ? 'Номер телефону:' : 'Phone number:'}<span>{number}</span></p>
         </div>
-        <Link to='../'><div className="btn"><p>продовжити покупки</p></div></Link>
+        <Link to='../'><div className="btn"><p>{ukrLang ? 'продовжити покупки' : 'Continue shopping.'}</p></div></Link>
       </div>
       <PageAnim data={loadImages}/>
     </div>

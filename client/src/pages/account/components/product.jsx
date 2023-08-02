@@ -2,14 +2,14 @@
 import React, { useEffect, useState } from 'react'
 import Axios from'../../../utils/axios'
 
-const Product = ({product}) => {
+const Product = ({product, order, ukrLang}) => {
     const [item, setItem] = useState('')
+    // const [title, setTitle] = useState()
 
     const fetchImage = async () => {
         try {
             const { data } = await Axios.get(`/productsRoute/product/:${product._id}`);
     
-            console.log(data);
             if(data?.product) {
               setItem(data.product)
             }
@@ -21,7 +21,6 @@ const Product = ({product}) => {
     useEffect(() => {
         fetchImage()
     },[product])
-
 
   return (
     <div className="productItem">
@@ -35,11 +34,11 @@ const Product = ({product}) => {
     <div className="producEndPart">
       <p className="quantity">
           {product.quantity}
-          <span>ШТ</span>
+          {ukrLang ? <span>ШТ</span> : <span>PCS</span>}
       </p>
       <p className="price">
           {item.price}
-          <span>{item.priceValue}</span>
+          <span>{order.priceValue === 'UAH' ? ' ₴' : ' $'}</span>
       </p>
     </div>
   </div>

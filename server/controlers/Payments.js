@@ -19,7 +19,7 @@ export const Payments = async (req, res) => {
           
           const data = {
             order_id: dataPayment.payment_id,
-            order_desc: 'test order',
+            order_desc: dataPayment.order_desc,
             currency: dataPayment.priceValue,
             amount: dataPayment.totalPrice,
             response_url: `http://localhost:5000/api/paymentsRoute/payments/payment/:${dataPayment.payment_id}`,
@@ -120,10 +120,10 @@ export const Payments = async (req, res) => {
         // console.log(order_id);
         // console.log(user);
 
-        if (!user) {
-          console.log('User or order not found');
-          return;
-        }
+        // if (!user) {
+        //   console.log('User or order not found');
+        //   return;
+        // }
     
         // Find the order index in the Orders array
         // const orderIndex = user.Orders.findIndex(order => order._id.toString() === order_id);
@@ -175,10 +175,14 @@ export const Payments = async (req, res) => {
           { $set: { orderStatus: { eng: 'accepted', ukr: 'прийнято' } } }
         );
 
-        await User.updateOne(
-          { 'Orders._id': orderId },
-          { $set: { 'Orders.$.orderStatus': { eng: 'accepted', ukr: 'прийнято' } } }
-        );
+        if (user) {
+          await User.updateOne(
+            { 'Orders._id': orderId },
+            { $set: { 'Orders.$.orderStatus': { eng: 'accepted', ukr: 'прийнято' } } }
+          );
+        }
+
+
 
         // const updatedUser = await User.findOne({ 'Orders._id': orderId });
 

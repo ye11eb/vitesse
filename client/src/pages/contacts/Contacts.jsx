@@ -29,13 +29,10 @@ const Contacts = ({ukrLang}) => {
                     <span>|</span>
                     {ukrLang ? (<p>Контакти</p>) : (<p>Contacts</p>)}
                 </div>
-                <div className="contacts_logo">
-                    <img src="./img/contacts_logo.svg" alt="" />
-                    {ukrLang ? (<p>КОНТАКТИ</p>) : (<p>CONTACTS</p>)}
-                </div>
                 <div className="service">
-                    {ukrLang ? <h1>Обслуговування клієнтів:</h1> : <h1>CUSTOMER SERVICE:</h1>}
-                    <p>Tel: +(380)-98-54-67-345</p>
+                    {ukrLang ? (<h1>КОНТАКТИ</h1>) : (<h1>CONTACTS</h1>)}
+                    {ukrLang ? <h2>Обслуговування клієнтів:</h2> : <h2>CUSTOMER SERVICE:</h2>}
+                    {ukrLang ? <p>Тел: +(380)-98-54-67-345</p> : <p>Tel: +(380)-98-54-67-345</p>}
                     <p>Email: shop@lavitesse.com.ua</p>
                     {ukrLang ? <p>Години роботи: Пн-Пт, 9:00-17:00</p> : <p>Hours of operation: Mon-Fri, 9:00-17:00</p>}
                 </div>

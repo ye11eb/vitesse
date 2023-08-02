@@ -2,12 +2,16 @@ import express  from "express"
 import mongoose from "mongoose"
 import dotenv from 'dotenv'
 import cors from 'cors'
+import fileUpload from 'express-fileupload'
 
 //Routes
-import UsersRote from './routes/User.js'
-import ProductsRote from './routes/Product.js'
-import OrdersRote from './routes/Orders.js'
-import PaymentsRote from "./routes/Payments.js"
+import UsersRoute from './routes/User.js'
+import ProductsRoute from './routes/Product.js'
+import OrdersRoute from './routes/Orders.js'
+import PaymentsRoute from "./routes/Payments.js"
+import StatsRoute from "./routes/Stats.js"
+import BestSellersRoute from './routes/Bestsellers.js'
+import ContentRoute from './routes/Content.js'
 
 const app = express()
 dotenv.config()
@@ -22,15 +26,20 @@ const DB_PASSWORD = process.env.DB_PASSWORD
 // Middleware
 
 app.use(cors())
+app.use(fileUpload())
 app.use(express.json())
 app.use(express.static('uploads'))
 
-
+//api/usersRoute/user
 //Routes
-app.use('/api/usersRoute', UsersRote)
-app.use('/api/productsRoute', ProductsRote)
-app.use('/api/ordersRoute', OrdersRote)
-app.use('/api/paymentsRoute', PaymentsRote)
+app.use('/api/usersRoute', UsersRoute)
+app.use('/api/productsRoute', ProductsRoute)
+app.use('/api/ordersRoute', OrdersRoute)
+app.use('/api/statsRoute', StatsRoute)
+app.use('/api/paymentsRoute', PaymentsRoute)
+app.use('/api/BestSellersRoute', BestSellersRoute)
+app.use('/api/ContentRoute', ContentRoute)
+
 
 
 async function start() {

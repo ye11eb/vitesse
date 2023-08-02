@@ -1,95 +1,5 @@
 import Product from "../modules/Product.js";
 
-//Create Manufacture
-// export const CreateProduct = async (req, res) => {
-//   try{
-//     const {images, imagesEng, title, titleEng, subtitle, subtitleEng, capacity, price, priceEng, info, infoEng, type, typeEng} = req.body
-
-//       const newProduct = new Product({
-//         images,
-//         imagesEng,
-//         title,
-//         titleEng,
-//         subtitle,
-//         subtitleEng,
-//         capacity,
-//         price,
-//         priceEng,
-//         info,
-//         infoEng,
-//         type,
-//         typeEng,
-//       })  
-
-//       await newProduct.save()
-
-//       return res.json({newProduct, message : 'товар успішно додано'})
-//   }
-//   catch(error){
-//     res.json({message: `something went wrong:${error}`})
-//     console.log(error);
-//   }
-// }
-
-
-//ChangeManufacture
-// export const ChangeManufacture = async (req, res) => {
-//   try{
-//     const {_id, images, title, name, price, priceValue, colections, clothesType, description, sizingText, sizingImg, materials, care, options, titleEng, nameEng, priceEng, priceValueEng, colectionsEng,clothesTypeEng, descriptionEng, sizingTextEng, sizingImgEng, materialsEng, careEng, optionsEng} = req.body
-
-
-//     const manufacture = await Manufacture.findById(_id)
-//       if (manufacture) {
-//         manufacture.imgUrl = images;
-//         manufacture.title = title;
-//         manufacture.name = name;
-//         manufacture.price = price;
-//         manufacture.priceValue = priceValue;
-//         manufacture.colections = colections;
-//         manufacture.clothesType = clothesType;
-//         manufacture.description = description;
-//         manufacture.sizingText = sizingText;
-//         manufacture.sizingImg = sizingImg;
-//         manufacture.materials = materials;
-//         manufacture.care = care;
-//         manufacture.options = options;
-//         manufacture.titleEng = titleEng;
-//         manufacture.nameEng = nameEng;
-//         manufacture.priceEng = priceEng;
-//         manufacture.priceValueEng = priceValueEng;
-//         manufacture.colectionsEng = colectionsEng;
-//         manufacture.clothesTypeEng = clothesTypeEng;
-//         manufacture.descriptionEng = descriptionEng;
-//         manufacture.sizingTextEng = sizingTextEng;
-//         manufacture.sizingImgEng = sizingImgEng;
-//         manufacture.materialsEng = materialsEng;
-//         manufacture.careEng = careEng;
-//         manufacture.optionsEng = optionsEng
-//       }
-//     await manufacture.save()
-
-//     return res.json({manufacture})
-//   }
-//   catch(error){
-//     res.json({message: `something went wrong:${error}`})
-//     console.log(error);
-//   }
-// }
-
-// export const deleteManufacture = async (req, res) => {
-//   try{
-//     const {_id} = req.body
-
-//     await Manufacture.deleteOne( {'_id': _id } )
-
-//     return res.json({_id})
-//   }
-//   catch(error){
-//     res.json({message: `something went wrong:${error}`})
-//     console.log(error);
-//   }
-// }
-
 //Get all manufactures
 export const GetProducts = async (req, res) => {
   try {
@@ -142,22 +52,34 @@ export const GetProduct = async (req, res) => {
 
 export const GetFilterOpts = async (req, res) => {
   try {
-    function getOptFromUrl(url) {
-      const parts = url.split('/');
-      const idWithColon = parts[parts.length - 1];
-      const opt = idWithColon.replace(':', ''); // замінити ":" на порожній рядок
-      return (opt);
-    }
-  
-    const reqOpt = getOptFromUrl(req.url)
-  
-    const distinctValues = await Product.distinct(reqOpt);
+    // function getOptFromUrl(url) {
+    //   const parts = url.split('/');
+    //   const idWithColon = parts[parts.length - 1];
+    //   const opt = idWithColon.replace(':', '');
+    //   return opt;
+    // }
 
-    return res.json({ distinctValues })
+    // const reqOpt = getOptFromUrl(req.url);
+
+    const values = await Product.find({})
+      .select('type typeEng -_id')
+      .lean();
+
+    // console.log(distinctValues);
+
+    const distinctValues = Array.from(new Set(values.map(JSON.stringify)), JSON.parse);
+
+  // console.log(uniqueValues);
+
+    return res.json({ distinctValues });
   } catch (error) {
-    res.json({message: `something went wrong: ${error}`})
+    res.json({ message: `something went wrong: ${error}` });
   }
-}
+};
+
+
+
+
 
 export const GetFilteredProducts = async (req, res) => {
 
@@ -169,7 +91,7 @@ export const GetFilteredProducts = async (req, res) => {
     return { type, startIndex, endIndex };
   }
   
-  const { type, startIndex, endIndex } = extractValuesFromLink(req.url);
+  // const { type, startIndex, endIndex } = extractValuesFromLink(req.url);
   
   // console.log('Type:', type);
   // console.log('Start Index:', startIndex);
@@ -178,17 +100,18 @@ export const GetFilteredProducts = async (req, res) => {
   
   try {
     const { type, startIndex, endIndex } = extractValuesFromLink(req.url);
+
+    console.log('gdfgdf');
+    console.log(type)
     if (type == 'all') {
       const products = await Product.find().skip(startIndex).limit(endIndex - startIndex + 1);
       // console.log('End Index:', endIndex);
       return res.json({products})
 
-    } else {
-      const products = await Product.find({
-        $or: [
-          { type: type },
-          { typeEng: type }
-        ],}).skip(startIndex).limit(endIndex - startIndex + 1);
+    } else {;
+      const products = await Product.find(
+          { typeEng: type }).skip(startIndex).limit(endIndex - startIndex + 1);
+        // console.log(products);
         return res.json({products})
     }
 
@@ -196,7 +119,7 @@ export const GetFilteredProducts = async (req, res) => {
     // console.log('Start Index:', startIndex);
     // console.log('End Index:', endIndex);
     // console.log(products);
-    return res.json({products})
+    // return res.json({products})
   } catch (error) {
     console.error('Error:', error.message);
   }

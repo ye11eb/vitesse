@@ -14,9 +14,17 @@ const UserSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      state: {
+      country: {
         type: String,
         required: true,
+      },
+      region: {
+        type: String,
+        required: false,
+      },
+      city: {
+        type: String,
+        required: false,
       },
       street: {
         type: String,

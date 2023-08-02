@@ -4,8 +4,9 @@ import React, { useEffect, useState } from 'react'
 import './header.scss'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from './imgs/logo_header.svg'
+import logo_mobile from './imgs/logo_header_mobile.svg'
 
-const Header = ({ukrLang, setUkrLang, isAuth}) => {
+const Header = ({ukrLang, setUkrLang, isAuth, cartItems}) => {
     const [headerShow, setHeaderShow] = useState(true)
     const [langHover, setLangHover] = useState(false)
     const [menuOpened, setMenuOpened] = useState(false)
@@ -17,17 +18,30 @@ const Header = ({ukrLang, setUkrLang, isAuth}) => {
 
     window.addEventListener('resize', handleWindowSizeChange);
 
-    // const toChangeLocationHandler = (link) => {
-    //   setToChangeLocation(link)
-    //   setTimeout(() => {
-    //     navigate(link)
-    //   }, 300);
-      
-    // }
+      // const closeAnim = () => {
+      //   setLangHover(true)
+      //   setTimeout(() => {
+      //       setOpenedFilter(false)
+      //       setOpenedFilterAnim(false)
+      //   }, 180);
+      // }
+
+      let hoverStartTime;
+      let hoverTimer;
+
+      function handleHoverStart() {
+        hoverStartTime = new Date().getTime();
+        hoverTimer = setTimeout(handleHoverAction, 200);
+      }
+      function handleHoverEnd() {
+        clearTimeout(hoverTimer); 
+        setLangHover(false)
+      }
+      function handleHoverAction() {
+        setLangHover(true)
+      }
 
     const closeMenuHandler = () => {
-      console.log(menuOpened);
-      console.log(menuClosedAnim);
       if (menuOpened) {
         setMenuClosedAnim(true)
         setTimeout(() => {
@@ -92,9 +106,7 @@ const Header = ({ukrLang, setUkrLang, isAuth}) => {
   return (
     <div className={headerShow ? "header_wrapper header_visible" : "header_wrapper header_hiden"}>
       {menuOpened && 
-      <div className={menuClosedAnim ? "menuWrapper menuWrapperClosed" : "menuWrapper"} 
-        onClick={() => closeMenuHandler()}
-      >
+      <div className={menuClosedAnim ? "menuWrapper menuWrapperClosed" : "menuWrapper"} >
         <div className={menuClosedAnim ? "menuOpened menuClosed" : "menuOpened"}>
         <div className="crosHairClose"
         onClick={() => closeMenuHandler()}>
@@ -105,31 +117,35 @@ const Header = ({ukrLang, setUkrLang, isAuth}) => {
           <Link to="catalogue">{ukrLang ? <p>КАТАЛОГ</p> : <p>CATALOG</p>}</Link>
           <Link to="about">{ukrLang ? <p>ПРО НАС</p> : <p>ABOUT US</p>}</Link>
           <Link to="contacts">{ukrLang ? <p>КОНТАКТИ</p> : <p>CONTACTS</p>}</Link>
-          <Link to="account">{ukrLang ? <p>МІЙ АККАУНТ</p> : <p>MY ACCOUNT</p>}</Link>
+          <Link to="likes">{ukrLang ? <p>ОБРАНІ ТОВАРИ</p> : <p>LIKED ITEMS</p>}</Link>
+          {isAuth ? <Link to="account">{ukrLang ? <p>МІЙ АКАУНТ</p> : <p>MY ACCOUNT</p>}</Link> : <Link to="login">{ukrLang ? <p>МІЙ АКАУНТ</p> : <p>MY ACCOUNT</p>}</Link>}
         </div> 
         <div className="other">
-          <Link to="/">{ukrLang ? <p>Бестселери</p> : <p>Bestsellers</p>}</Link>
-          <Link to="login">{ukrLang ? <p>Увійти</p> : <p>Login</p>}</Link>
-          <Link to="register">{ukrLang ? <p>Зареєструватись</p> : <p>Register</p>}</Link>
         </div>
         <div className="lang">
-          {langHover ? (<p>Мова:</p>) : (<p>Мова:</p>)}
-          <div className="dropdown_list">
-            <div className="langs" 
+          {ukrLang ? <p>Мова</p> : <p>Lang</p>}
+          <div className="dropdown_list"
+            // onMouseOver={() => handleHoverStart()}
+            // onMouseLeave={() => handleHoverEnd()}
             onMouseOver={() => setLangHover(true)}
             onMouseLeave={() => setLangHover(false)}
-            >
+          >
+            <div className="langs">
                 <p className="lang">{ukrLang ? 'Ua' : 'En'}</p>
                 <p className={langHover ? "lang" : "hoverdLang lang"}
                   onClick={() => setUkrLang(!ukrLang)}
                 >{ukrLang ? 'En' : 'Ua'}</p>
             </div>
             <div className="arrow">
-                <img src="./img/arrow.png" alt="" />
+                <div className="line"></div>
+                <div className="line secondLine"></div>
             </div>
           </div>
         </div>
         </div>
+        <div className="menubg"
+          onClick={() => closeMenuHandler()}
+        ></div>
       </div> }
 
         {width > 600 ? (<div className='header'>
@@ -141,6 +157,8 @@ const Header = ({ukrLang, setUkrLang, isAuth}) => {
             </div>
             <div className="header_buttons">
                 <div className="dropdown_list"
+                  // onMouseOver={() => handleHoverStart()}
+                  // onMouseLeave={() => handleHoverEnd()}
                   onMouseOver={() => setLangHover(true)}
                   onMouseLeave={() => setLangHover(false)}
                 >
@@ -158,7 +176,7 @@ const Header = ({ukrLang, setUkrLang, isAuth}) => {
                 <div className="buttons">
                     {isAuth ? <Link to="account"><div className='account_button img'/></Link> : <Link to="login"><div className='account_button img'/></Link>}
                     <Link to="likes"><div className='like_button img'/></Link>
-                    <Link to="cart"><div className='cart_button img'/></Link>
+                    <Link to="cart"><div className='cart_button img'/>{cartItems?.length > 0 &&  <p className='cartitemsNumbs'>{cartItems?.length}</p>}</Link>
                 </div>
             </div>
         </div>) : (
@@ -170,9 +188,9 @@ const Header = ({ukrLang, setUkrLang, isAuth}) => {
             <div className="line"></div>
             <div className="line shorter_line"></div>
           </div>
-          <div className="header_logo"><Link to=""><img src="./img/logo_header.svg" alt="" /></Link></div>
+          <div className="header_logo"><Link to=""><img src={logo_mobile} alt="" /></Link></div>
           <div className="buttons">
-            <Link to="cart"><img src="./img/cart_button.svg" alt="" /></Link>
+            <Link to="cart"><div className='cart_button img'/></Link>
           </div>
         </div>)}
     </div>

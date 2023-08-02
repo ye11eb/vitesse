@@ -12,7 +12,7 @@ router.get('/product/:id', GetProduct)
 
 router.get('/products/:opt/:nums', GetFilteredProducts)
 
-router.get('/filterOpts/:opt', GetFilterOpts)
+router.get('/filterOpts', GetFilterOpts)
 
 // router.delete('/product/:id', DeleteProduct)
 

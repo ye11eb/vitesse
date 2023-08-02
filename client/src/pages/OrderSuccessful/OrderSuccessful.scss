@@ -7,7 +7,6 @@
     width: 1200px;
     margin-top: 150px;
     h1{
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 500;
       font-size: 24px;
@@ -16,13 +15,12 @@
       text-transform: uppercase;
     }
     h2{
-      font-family: 'Montserrat';
       font-style: normal;
       font-weight: 400;
       font-size: 20px;
       line-height: 24px;
       letter-spacing: 0.015em;
-      font-variant: small-caps;
+      font-variant: all-petite-caps;
     }
     .infoMainCotainer{
       width: 100%;
@@ -31,13 +29,12 @@
       align-items: center;
       flex-direction: column;
       span,p{
-        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
         line-height: 24px;
         letter-spacing: 0.015em;
-        font-variant: small-caps;
+        font-variant: all-petite-caps;
       }
       span{
         margin-left: 10px;
@@ -62,13 +59,12 @@
           line-height: 24px;
         }
         span,p{
-          font-family: 'Montserrat';
           font-style: normal;
           font-weight: 400;
           font-size: 15px;
           line-height: 18px;
           letter-spacing: 0.015em;
-          font-variant: small-caps;
+          font-variant: all-petite-caps;
           color: #000000;
         }
       }
@@ -82,8 +78,8 @@
 
   @media (max-width: 1200px) {
     .OrederSuccess{
-        width: 100%;
-        margin-top: 30px;
+        width: 90%;
+        margin-top: 20vh;
         h1{
           font-size: 20px;
           line-height: 24px;
@@ -96,18 +92,18 @@
         }
         .infoMainCotainer{
           width: 100%;
+          height: 40vh;
           display: flex;
           justify-content: center;
           align-items: center;
           flex-direction: column;
           span,p{
-            font-family: 'Montserrat';
             font-style: normal;
             font-weight: 400;
             font-size: 14px;
             line-height: 18px;
             letter-spacing: 0.015em;
-            font-variant: small-caps;
+            font-variant: all-petite-caps;
           }
           span{
             margin-left: 10px;
@@ -132,14 +128,58 @@
               line-height: 24px;
             }
             span,p{
-              font-family: 'Montserrat';
               font-style: normal;
               font-weight: 400;
               font-size: 15px;
               line-height: 18px;
               letter-spacing: 0.015em;
-              font-variant: small-caps;
+              font-variant: all-petite-caps;
               color: #000000;
+            }
+          }
+          .btn{
+            width: 229px;
+            height: 35px;
+          }
+        }
+      }
+  }
+
+  @media (max-width: 600px) {
+    .OrederSuccess{
+        width: 90%;
+        margin-top: 15vh;
+        h1{
+          font-size: 16px;
+        }
+        h2{
+          font-size: 14px;
+        }
+        .infoMainCotainer{
+          height: unset;
+          margin-top: 30px;
+          span,p{
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+          }
+          span{
+            margin-left: 10px;
+          }
+          .first{
+            width: 100%;
+            margin-top: 20px;
+          }
+          .second{
+            width: 100%;
+            margin: 20px 0 25px 0;
+            p:first-child{
+              font-size: 16px;
+              line-height: 18px;
+            }
+            span,p{
+              font-size: 12px;
+              line-height: 16px;;
             }
           }
           .btn{

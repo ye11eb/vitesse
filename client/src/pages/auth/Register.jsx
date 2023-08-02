@@ -7,14 +7,15 @@ import Axios from'../../utils/axios'
 import { toast } from 'react-toastify'
 import PageAnim from '../components/pageAnim/PageAnim'
 
-const Register = ({ukrLang}) => {
+const Register = ({ukrLang, CountriesData}) => {
     const [terms, setTerms] = useState(false)
     const [password, setPassword] = useState('')
     const [isPasswordShowed, setIsPasswordShowed] = useState(false)
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [surname, setSurname] = useState('')
-    const [state, setState] = useState('')
+    const [region, setRegion] = useState('')
+    const [country, setCountry] = useState('')
     // const [street, setStreet] = useState('')
     // const [houseNum, setHouseNum] = useState('')
     const [number, setNumber] = useState('')
@@ -29,13 +30,16 @@ const Register = ({ukrLang}) => {
 
     const navigate = useNavigate();
 
+    console.log(country);
+
     const RegisterHandler = async () => {
-      if (name&&surname&&email&&state&&number&&password&&terms) {
+      if (name&&surname&&email&&region&&number&&password&&terms&&country) {
         const userData = {
           name,
           surname,
           email,
-          state,
+          region,
+          country,
           number,
           password,
         };
@@ -80,6 +84,8 @@ const Register = ({ukrLang}) => {
 
     };
 
+    console.log(document.getElementById('input0'));
+
     const [loadImages, setLoadImages] = useState(false)
 
 
@@ -95,91 +101,83 @@ const Register = ({ukrLang}) => {
           <div className='auth page'>
             <div className="input_part register">
               <div className="inputs">
-                  <h1>РЕЄСТРАЦІЯ</h1>
-                <p>У зв'язку з чинним законодавством та необхідністю виставлення рахунку за Ваші покупки, будь ласка, заповніть дані, наведені нижче.</p>
-                <h1>Ваші дані</h1>
+                <h1>{ukrLang ? 'РЕЄСТРАЦІЯ' : 'REGISTRATION'}</h1>
+                <p>{ukrLang ? "У зв'язку з чинним законодавством та необхідністю виставлення рахунку за Ваші покупки, будь ласка, заповніть дані, наведені нижче." : "Due to current legislation and the need to issue an invoice for your purchases, please fill in the required information below."}</p>
+                <h1>{ukrLang ? 'Ваші дані' : 'Your information'}</h1>
                 <div className="inputsWrapper">
                 
-                  <dl class="inputbox">
-                      <dd class="inputbox-content">
+                  <dl className="inputbox">
+                      <dd className="inputbox-content">
                       <input id="name" type="text" required
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                       />
-                      <label for="name">name</label>
-                      <span class="underline"></span>
+                      <label htmlFor="name">{ukrLang ? "ім'я" : 'first name'}</label>
+                      <span className="underline"></span>
                       </dd>
                   </dl>
 
-                  <dl class="inputbox">
-                      <dd class="inputbox-content">
+                  <dl className="inputbox">
+                      <dd className="inputbox-content">
                       <input id="surname" type="text" required
                           value={surname}
                           onChange={(e) => setSurname(e.target.value)}
                       />
-                      <label for="surname">surname</label>
-                      <span class="underline"></span>
+                      <label htmlFor="surname">{ukrLang ? 'Прізвище' : 'Second name'}</label>
+                      <span className="underline"></span>
                       </dd>
                   </dl>
+                  
+                  <dl className="inputbox select longer">
+                    <dd className="inputbox-content">
+                        <label htmlFor="input0">{ukrLang ? 'Країна' : 'Country'}</label>
+                        <select id="input0" required defaultValue={country}
+                            onChange={() => setCountry(document.getElementById('input0').value)}
+                        >
+                            {CountriesData.map((dataEl) => (
+                                <option value={dataEl.Country} key={dataEl.Country}>{dataEl.Country}</option>
+                            ))}
+                        </select>
+                        <span className="underline"></span>
+                    </dd>    
+                  </dl>  
 
-                  <dl class="inputbox">
-                      <dd class="inputbox-content">
+                  <dl className="inputbox">
+                      <dd className="inputbox-content">
                       <input id="state" type="text" required
-                          value={state}
-                          onChange={(e) => setState(e.target.value)}
+                          value={region}
+                          onChange={(e) => setRegion(e.target.value)}
                       />
-                      <label for="state">state</label>
-                      <span class="underline"></span>
+                      <label htmlFor="state">{ukrLang ? 'Область' : 'Region'}</label>
+                      <span className="underline"></span>
                       </dd>
                   </dl>
 
-                  {/* <dl class="inputbox">
-                      <dd class="inputbox-content">
-                      <input id="street" type="text" required
-                          value={street}
-                          onChange={(e) => setStreet(e.target.value)}
-                      />
-                      <label for="street">street</label>
-                      <span class="underline"></span>
-                      </dd>
-                  </dl>
-
-                  <dl class="inputbox">
-                      <dd class="inputbox-content">
-                      <input id="houseNum" type="text" required
-                          value={houseNum}
-                          onChange={(e) => setHouseNum(e.target.value)}
-                      />
-                      <label for="houseNum">houseNum</label>
-                      <span class="underline"></span>
-                      </dd>
-                  </dl> */}
-
-                  <dl class="inputbox">
-                      <dd class="inputbox-content">
+                  <dl className="inputbox">
+                      <dd className="inputbox-content">
                       <input id="number" type="text" required
                           value={number}
                           onChange={(e) => setNumber(e.target.value)}
                       />
-                      <label for="number">number</label>
-                      <span class="underline"></span>
+                      <label htmlFor="number">{ukrLang ? 'Номер Телефону' : 'Phone number'}</label>
+                      <span className="underline"></span>
                       </dd>
                   </dl>
                 </div>
-                <h1>Ваш обліковий запис</h1>
-                <dl class="inputbox">
-                  <dd class="inputbox-content">
+                <h1>{ukrLang ? 'Ваш обліковий запис' : 'Your account'}</h1>
+                <dl className="inputbox longer">
+                  <dd className="inputbox-content">
                     <input id="email" type="text" required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
-                    <label for="email">Email</label>
-                    <span class="underline"></span>
+                    <label htmlFor="email">Email</label>
+                    <span className="underline"></span>
                   </dd>
                 </dl>
-                <div className="input_password">
-                    <dl class="inputbox">
-                      <dd class="inputbox-content">
+                <div className="input_password longer">
+                    <dl className="inputbox">
+                      <dd className="inputbox-content">
                       <input id="password" required
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
@@ -190,30 +188,35 @@ const Register = ({ukrLang}) => {
                           <img src="./img/eye_password.svg" alt="" />
                           <div className="croshair_box">
                               <div className={isPasswordShowed ? "line_unVisible" : "line" }></div>
-                              {/* <div className="line second_line"></div> */}
                           </div>
                       </div>
-                      <label for="input0">Password</label>
-                      <span class="underline"></span>
+                      <label htmlFor="input0">{ukrLang ? 'Пароль' : 'Password'}</label>
+                      <span className="underline"></span>
                       
                       </dd>
-                      <p>Пароль повинен містити не менше 6 символів</p>
+                      <p>{ukrLang ? 'Пароль повинен містити не менше 6 символів' : 'Password must contain at least 6 characters.'}</p>
                   </dl> 
                 </div>
                 <div className="remember_me">
                   <div className={terms ? "checkbox checked" : "checkbox"}
                   onClick={() => setTerms(!terms)}
                   ></div>
+                  {ukrLang ? 
                   <p className="refToRegister">
                       Я приймаю умови  <Link to="/register">правил магазину</Link> і <Link to="/register">політики конфіденційності.</Link>
                   </p>
+                  : 
+                  <p className="refToRegister">
+                    I accept the<Link to="/register">store rules</Link> і <Link to="/register">privacy policy.</Link>
+                  </p>
+                  }
                   </div>
                   <div className="btn"
                     onClick={() => RegisterHandler()}
-                  ><p>УВІЙТИ</p></div>
+                  ><p>{ukrLang ? 'Зареєструватись' : 'Register'}</p></div>
                 </div>
             </div>
-            {width > 600 &&
+            {width > 900 &&
               <div className='registerSecondPart'>
                 <div className="line_logo"></div>
                 <div className="img">

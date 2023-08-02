@@ -8,7 +8,6 @@ p, input, span, label{
 
 .accountWrapper{
     h1{
-        font-family: 'Montserrat';
         font-style: normal;
         font-weight: 500;
         font-size: 24px;
@@ -29,13 +28,12 @@ p, input, span, label{
                 // width: 300px;
                 padding: 0 40px 0 0;
                 text-align: start;
-                font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 20px;
                 line-height: 24px;
                 letter-spacing: 0.015em;
-                font-variant: small-caps;
+                font-variant: all-petite-caps;
                 cursor: pointer;
                 user-select: none;
             }
@@ -91,20 +89,18 @@ p, input, span, label{
                 width: 100%;
                 margin: 0;
                 font-size: 24px;
-                font-family: 'Montserrat';
                 input{
-                width: 100%;
-                height: 30px;
-                box-sizing: border-box;
-                line-height: 30px;
-                font-size:24px;
-                border:0;
-                background: none;
-                border-bottom:1px solid #ccc;
-                outline:none;
-                font-family: 'Montserrat';
-                border-radius: 0;
-                appearance: none;
+                    width: 100%;
+                    height: 30px;
+                    box-sizing: border-box;
+                    line-height: 30px;
+                    font-size:24px;
+                    border:0;
+                    background: none;
+                    border-bottom:1px solid #ccc;
+                    outline:none;
+                    border-radius: 0;
+                    appearance: none;
                 &:focus,&:valid{
                     &~label{
                     color: rgb(103, 186, 255);
@@ -168,13 +164,12 @@ p, input, span, label{
                         }
                 
                         p{
-                        font-family: 'Montserrat';
-                        font-style: normal;
-                        font-weight: 400;
-                        font-size: 20px;
-                        line-height: 24px;
-                        letter-spacing: 0.015em;
-                        font-variant: small-caps;
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 20px;
+                            line-height: 24px;
+                            letter-spacing: 0.015em;
+                            font-variant: all-petite-caps;
                         }
                 
                         .checked{
@@ -217,20 +212,19 @@ p, input, span, label{
                 justify-content: space-between;
                 flex-direction: row;
                 .part{
-                    width: 45%;
+                    width: 30%;
                     display: flex;
                     flex-direction: column;
                     justify-content: end;
                 }
             }
             .subtitle{
-                font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 15px;
                 line-height: 18px;
                 letter-spacing: 0.015em;
-                font-variant: small-caps;
+                font-variant: all-petite-caps;
                 color: #000000;
                 margin-top: 50px;
             }
@@ -292,20 +286,18 @@ p, input, span, label{
                 width: 100%;
                 margin: 0;
                 font-size: 24px;
-                font-family: 'Montserrat';
                 input{
-                width: 100%;
-                height: 30px;
-                box-sizing: border-box;
-                line-height: 30px;
-                font-size:24px;
-                border:0;
-                background: none;
-                border-bottom:1px solid #ccc;
-                outline:none;
-                font-family: 'Montserrat';
-                border-radius: 0;
-                appearance: none;
+                    width: 100%;
+                    height: 30px;
+                    box-sizing: border-box;
+                    line-height: 30px;
+                    font-size:24px;
+                    border:0;
+                    background: none;
+                    border-bottom:1px solid #ccc;
+                    outline:none;
+                    border-radius: 0;
+                    appearance: none;
                 &:focus,&:valid{
                     &~label{
                     color: rgb(103, 186, 255);
@@ -353,7 +345,6 @@ p, input, span, label{
                 justify-content: center;
                 align-items: center;
                 h1{
-                    font-family: 'Montserrat', sans-serif;;
                     font-size: 24px;
                     font-weight: 500;
                     line-height: 29px;
@@ -361,12 +352,11 @@ p, input, span, label{
                     text-transform: uppercase;
                 }
                 p{
-                    font-family: 'Montserrat', sans-serif;;
                     font-weight: 400;
                     font-size: 20px;
                     line-height: 24px;
                     letter-spacing: 0.015em;
-                    font-variant: small-caps;
+                    font-variant: all-petite-caps;
                 }
                 .btn{
                     margin-top: 70px;
@@ -383,20 +373,18 @@ p, input, span, label{
                     cursor: pointer;
                     
                     p{
-                        font-family: "Montserrat", sans-serif;
                         font-weight: 400;
                         font-size: 20px;
                         line-height: 24px;
                         letter-spacing: 0.015em;
                     }
                     h2{
-                        font-family: 'Montserrat';
                         font-style: normal;
                         font-weight: 400;
                         font-size: 20px;
                         line-height: 24px;
                         letter-spacing: 0.015em;
-                        font-variant: small-caps;
+                        font-variant: all-petite-caps;
                         margin-bottom: 60px;
                     }
                     .productsWrapper{
@@ -404,7 +392,7 @@ p, input, span, label{
                         border-top: 1px solid #9A9A9A;
                         // max-height: 336px;
                         // overflow-y: scroll;
-                        margin-top: 50px;
+                        // margin-top: 50px;
                         width: 100%;
                         flex-direction: row;
                         &::-webkit-scrollbar {
@@ -466,18 +454,19 @@ p, input, span, label{
                         flex-direction: column;
                         gap: 20px;
                         p, span{
-                            font-family: 'Montserrat';
                             font-style: normal;
                             font-weight: 400;
                             font-size: 15px;
                             line-height: 18px;
                             letter-spacing: 0.015em;
-                            font-variant: small-caps;
+                            font-variant: all-petite-caps;
                         }
 
                         p{
                             color: #000;
                             margin-right: 7px;
+                            display: flex;
+                            flex-direction: row;
                         }
 
                         span{
@@ -503,13 +492,22 @@ p, input, span, label{
 }
 
 @media (max-width: 1200px) {
+    .page{
+        margin-top: 68px;
+        margin-bottom: 0 !important;
+    }
     .accountWrapper{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
         h1{
             font-size: 12px;
             line-height: 14px;
             margin: 30px 0;
         }
         .innerPageWrapper{
+            width: 90%;
             .titlesWrapper{
                 p{
                     padding: 0 20px 0 0;
@@ -520,6 +518,7 @@ p, input, span, label{
             }
             
             .inerpage{
+                height: calc(100vh - 318px);
                 .subtitle{
                     font-size: 9px;
                     line-height: 12px;
@@ -597,7 +596,8 @@ p, input, span, label{
                 }
                 .ordersWrapper{
                     .orderWrapper{
-                        margin-top: 50px;
+                        width: 100%;
+                        padding: 25px 0 25px 0;
                         
                         p{
                             font-size: 12px;
@@ -613,7 +613,7 @@ p, input, span, label{
                             border-top: 1px solid #9A9A9A;
                             // max-height: 336px;
                             // overflow-y: scroll;
-                            margin-top: 50px;
+                            // margin-top: 50px;
                             width: 100%;
                             flex-direction: row;
                             
@@ -661,13 +661,12 @@ p, input, span, label{
                             flex-direction: column;
                             gap: 20px;
                             p, span{
-                                font-family: 'Montserrat';
                                 font-style: normal;
                                 font-weight: 400;
                                 font-size: 15px;
                                 line-height: 18px;
                                 letter-spacing: 0.015em;
-                                font-variant: small-caps;
+                                font-variant: all-petite-caps;
                             }
     
                             p{
@@ -723,6 +722,7 @@ p, input, span, label{
             }
 
             .inerpage{
+                // height: 457px;
                 margin: 0;
                 padding:0 0 0 0;
                 .contactInfo{
@@ -804,8 +804,9 @@ p, input, span, label{
                     }
                 }
                 .ordersWrapper{
+                    // justify-content: unset;
                     .orderWrapper{
-                        margin-top: 50px;
+                        overflow-x: clip;
                         
                         p{
                             font-size: 12px;
@@ -821,7 +822,7 @@ p, input, span, label{
                             border-top: 1px solid #9A9A9A;
                             // max-height: 336px;
                             // overflow-y: scroll;
-                            margin-top: 50px;
+                            // margin-top: 50px;
                             width: 100%;
                             flex-direction: row;
                             
@@ -869,13 +870,12 @@ p, input, span, label{
                             flex-direction: column;
                             gap: 20px;
                             p, span{
-                                font-family: 'Montserrat';
                                 font-style: normal;
                                 font-weight: 400;
                                 font-size: 15px;
                                 line-height: 18px;
                                 letter-spacing: 0.015em;
-                                font-variant: small-caps;
+                                font-variant: all-petite-caps;
                             }
     
                             p{
@@ -890,6 +890,9 @@ p, input, span, label{
                     }
                 }
             }  
+            .contactInfo {
+                height: 460px;
+            }
             @keyframes inAnim {
                 0%{
                     left: -1000px;
@@ -903,9 +906,38 @@ p, input, span, label{
 }
 
 @media (max-width: 400px) {
-    .accountWrapper .innerPageWrapper .inerpage .ordersWrapper .orderWrapper .productsWrapper .productItem .producEndPart {
-        flex-direction: column;
-    }
+    .accountWrapper .innerPageWrapper .inerpage .ordersWrapper .orderWrapper .productsWrapper .productItem{
+        height: 180px;
+        img{
+            width: 90px;
+            height: 140px;
+        }
+        
+        & > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .producEndPart{
+            gap: 10px;
+        }
+
+        .productItemInfo{
+            margin-left: 10px;
+            display: flex;
+            flex-direction: column;
+            .capacity{
+                color: #7E7E7E;
+                & span{
+                    color: #7E7E7E;
+                }
+            }
+        }
+        .producEndPart {
+            flex-direction: column;
+        }
+    } 
 }
 
 // @media (max-width: 600px) {

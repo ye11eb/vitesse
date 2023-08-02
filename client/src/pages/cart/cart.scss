@@ -1,12 +1,9 @@
-$secondFont: 'Neutral Face', sans-serif;
-$mainFont: 'Montserrat', sans-serif;
-
 .page_tree_hovered{
     position: absolute;
     top: -100px;
 }
 
-.ordersWrapper{
+.CartOrdersWrapper{
     &>*{
         position: relative;
         animation: .3s inAnim;
@@ -38,7 +35,6 @@ $mainFont: 'Montserrat', sans-serif;
         height: 530px;
     }
     p{
-        font-family: $mainFont;
         font-weight: 400;
         font-size: 20px;
         line-height: 24px;
@@ -64,12 +60,14 @@ $mainFont: 'Montserrat', sans-serif;
             position: relative;
             top: 0;
             cursor: pointer;
-            justify-content: space-evenly;
+            justify-content: space-between;
             align-items: center;
             flex-direction: row;
             border: 1px solid #000000;
+            *{
+                margin: 0 20px;
+            }
             p{
-                font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 500;
                 font-size: 24px;
@@ -136,6 +134,7 @@ $mainFont: 'Montserrat', sans-serif;
                 }
                 .price{
                     width: 100px;
+                    text-align: center;
                 }
                 .changeQuantity{
                     width: 120px;
@@ -177,7 +176,7 @@ $mainFont: 'Montserrat', sans-serif;
 
         .paymentPart{
             height: 342px;
-            width: 230px;
+            width: 270px;
             margin: 50px 0px 0 50px;
             &>p{
                 font-weight: 400;
@@ -273,7 +272,6 @@ $mainFont: 'Montserrat', sans-serif;
             width: 171px
         }
         h1{
-            font-family: $mainFont;
             font-size: 24px;
             font-weight: 500;
             line-height: 29px;
@@ -281,12 +279,11 @@ $mainFont: 'Montserrat', sans-serif;
             text-transform: uppercase;
         }
         p{
-            font-family: $mainFont;
             font-weight: 400;
             font-size: 20px;
             line-height: 24px;
             letter-spacing: 0.015em;
-            font-variant: small-caps;
+            font-variant: all-petite-caps;
         }
         .btn{
             width: 359px;
@@ -301,12 +298,13 @@ $mainFont: 'Montserrat', sans-serif;
         .paycart{
             height: 275px;
         }
-        p{
+        p, span{
             font-size: 12px;
             line-height: 14px;
         }
     
         .cart_partsWrapper{
+            margin-top: 10px;
             width: 100%;
             .comeback{
                 width: 229px;
@@ -334,14 +332,41 @@ $mainFont: 'Montserrat', sans-serif;
                         width: 66px;
                         height: 91px;
                     }
+                    
                     .changeQuantity{
-                        width: 65px;
-                        height: 20px;
+                        width: 100px;
+                        height: 30px;
                         .sign{
-                            width: 10px;
-                            height: 19px;
+                            width: 40px;
+                            height: 35px;
                         }
                     }
+                    .delete{
+                        transform: rotate(45deg);
+                        width: 19px;
+                        height: 19px;
+                        .line{
+                            top: unset;
+                            bottom: 5px;
+                        }
+                    }
+                    // .changeQuantity{
+                    //     width: 120px;
+                    //     height: 37px;
+                    //     border: 1px solid #000000;
+                    //     display: flex;
+                    //     justify-content: space-between;
+                    //     align-items: center;
+                    //     .sign{
+                    //         width: 40px;
+                    //         height: 35px;
+                    //         position: relative;
+                    //         .line{
+                    //             top: 17px; 
+                    //             left: 10px;
+                    //         }
+                    //     }
+                    // }
     
                     .line{
                         width: 10px;
@@ -392,10 +417,11 @@ $mainFont: 'Montserrat', sans-serif;
             position: relative;
             right: 0;
         }
-    
+
         .hidePayCart{
             position: relative;
-            right: -50vw;
+            right: -100vw;
+            width: 0%;
         }
 
         .empty_cart{
@@ -429,12 +455,12 @@ $mainFont: 'Montserrat', sans-serif;
 @media (max-width: 600px) {
     .cart{
         margin-top: 100px;
-        height: calc(100vh - 100px);
+        height: calc(100vh - 70px);
         .paycart{
             height: 275px;
             display: none;
         }
-        p{
+        p, span{
             font-size: 12px;
             line-height: 14px;
         }
@@ -461,21 +487,52 @@ $mainFont: 'Montserrat', sans-serif;
         }
     
         .cart_part{
+            height: calc(100vh - 284px);
             &:first-child{
                 padding-left: 0px;
             }
             .cartItemsWrapper{
+                border-bottom: 1px solid #9A9A9A;
+                border-top: 1px solid #9A9A9A;
                 max-height: unset;
-                height:235px;
-                overflow:visible;
+                height: calc(100vh - 284px);
+                overflow-y: scroll;
+                overflow-x:clip;
+                .cartItem{
+                    .price{
+                        width: 60px;
+                    }
+                    .changeQuantity{
+                        width: 70px;
+                        height: 25px;
+                        .sign{
+                            width: 40px;
+                            height: 35px;
+                        }
+                    }
+                    .delete{
+                        transform: rotate(45deg);
+                        width: 19px;
+                        height: 19px;
+                        .line{
+                            top: unset;
+                            bottom: 5px;
+                        }
+                    }
+                    .cartItemInfo {
+                        width: 70px;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
             }
             .go_next{
-                position:fixed;
-                top: 80vh;
+                // position:relative;
+                // top: 70vh;
                 height: 75px;
                 width: 100%;
                 padding-left: 25px;
-                margin: 40px 0;
+                // margin: 40px 0;
                 &>div{
                     height: 100%;
                     position: relative;

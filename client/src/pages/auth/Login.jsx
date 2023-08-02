@@ -1,4 +1,3 @@
-/* eslint-disable no-lone-blocks */
 import React, { useEffect, useState } from 'react'
 import "./auth.scss"
 import { Link, useNavigate } from 'react-router-dom'
@@ -67,12 +66,6 @@ const Auth = ({ukrLang}) => {
           toast.error('Something went wrong')
         }
       }
-    
-    // else if(!terms){
-    //   {ukrLang ? 
-    //     toast.error('Вам потрібно погодитись з правилами та умовами магазину'):
-    //     toast.error('Вам потрібно погодитись  правилами та умовами магазину')
-    //   }
     }else{
     {ukrLang ? 
       toast.error('Вам потрібно заповнити усі поля'):
@@ -94,28 +87,29 @@ const Auth = ({ukrLang}) => {
   return (
     <div className="page_wrapper">
       <div className="auth_wrapper">
-        <div className='auth page'>
-          <div className="input_part login">
+        <div className='auth page login_authPage'>
+          <div className="input_part c">
+            {ukrLang ? 
             <div className="inputs">
               <h1>АВТОРИЗАЦІЯ</h1>
-              <dl class="inputbox">
-                <dd class="inputbox-content">
+              <dl className="inputbox">
+                <dd className="inputbox-content">
                   <input id="email" type="text" required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label for="email">Email</label>
-                  <span class="underline"></span>
+                  <label htmlFor="email">Email</label>
+                  <span className="underline"></span>
                 </dd>
               </dl>
-              <dl class="inputbox">
-                <dd class="inputbox-content">
+              <dl className="inputbox">
+                <dd className="inputbox-content">
                   <input id="password" type="text" required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <label for="password">Password</label>
-                  <span class="underline"></span>
+                  <label htmlFor="password">Пароль</label>
+                  <span className="underline"></span>
                 </dd>
               </dl>
               <div className="remember_me">
@@ -130,10 +124,47 @@ const Auth = ({ukrLang}) => {
                 <p className="refToRegister">
                   Якщо у вас ще немає акаунту, то <Link to="/register">зареєструйтесь</Link>
                 </p>
-              </div>
+            </div> 
+            :
+            <div className="inputs">
+              <h1>AUTHORIZATION</h1>
+              <dl className="inputbox">
+                <dd className="inputbox-content">
+                  <input id="email" type="text" required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label htmlFor="email">Email</label>
+                  <span className="underline"></span>
+                </dd>
+              </dl>
+              <dl className="inputbox">
+                <dd className="inputbox-content">
+                  <input id="password" type="text" required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <label htmlFor="password">Password</label>
+                  <span className="underline"></span>
+                </dd>
+              </dl>
+              <div className="remember_me">
+                <div className={rememberMe ? "checkbox checked" : "checkbox"}
+                onClick={() => setRememberMe(!rememberMe)}
+                ></div>
+                  <p>Remember me</p>
+                </div>
+                <div className="btn"
+                  onClick={() => Login()}
+                ><p>LOGIN</p></div>
+                <p className="refToRegister">
+                  If you don't have an account yet, <Link to="/register">register.</Link>
+                </p>
+            </div> 
+            }
           </div>
-          {width >= 600 && <div className="line_logo"></div>}
-          {width >= 600 && <div className="img">
+          {width >= 900 && <div className="line_logo"></div>}
+          {width >= 900 && <div className="img">
             <img src="./img/login_img.svg" alt="" />
           </div>}
         </div>

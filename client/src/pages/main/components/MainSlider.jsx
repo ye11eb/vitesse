@@ -18,24 +18,10 @@ const MainSlider = ({width, manufactures, setOpenedManufacture, likesItems, setL
   };
 
   return (
-  //   <div>
-  //   <h2> Single Item</h2>
-  //   <Slider {...settings}>
-  //     <div className='slide'>
-  //       <h3>1</h3>
-  //     </div>
-  //     <div className='slide'>
-  //       <h3>2</h3>
-  //     </div>
-  //     <div className='slide'>
-  //       <h3>3</h3>
-  //     </div>
-  //   </Slider>
-  // </div>
+
     <Slider {...settings}>
       {manufactures.map((manufacture) => (
-        <CardItem item={manufacture} setOpenedManufacture={setOpenedManufacture} likesItems={likesItems} setLikesItems={setLikesItems}/>
-        // <div className="">{manufacture.title}</div>
+        <CardItem key={manufacture?._id} item={manufacture} setOpenedManufacture={setOpenedManufacture} likesItems={likesItems} setLikesItems={setLikesItems}/>
     ))}
     </Slider>
   )

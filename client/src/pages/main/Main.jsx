@@ -1,23 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import './main.scss';
 import CardItem from '../components/card/CardItem.jsx';
 import MainSlider from './components/MainSlider';
-import Axios from'../../utils/axios'
 import Footer from '../components/footer/Footer';
 import { Link } from 'react-router-dom';
 import PageAnim from '../components/pageAnim/PageAnim';
+import video from './video/video.mp4'
+import video2 from './video/video2.mp4'
 
-const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsellerProucts}) => {
+const Main = ({ukrLang, setOpenedManufacture, bestsellerProucts, isUaLocation}) => {
     
     const [firstQOpened, setFirstQOpened] = useState(true)
-    console.log(bestsellerProucts);
     const [secondQOpened, setsecondQOpened] = useState(false)
     const [thirdQOpened, setThirdQOpened] = useState(true)
     const [fourthQOpened, setFourthQOpened] = useState(true)
-
-    const [products, setProducts] = useState(bestsellerProucts)
 
     const [width, setWidth] = useState(window.innerWidth)
     function handleWindowSizeChange() {
@@ -27,31 +23,26 @@ const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsel
     window.addEventListener('resize', handleWindowSizeChange);
     
 
-    // const fetchProduct = async () => {
-    //     try {
-    //       const { data } = await Axios.get(`/productsRoute/products/:0-2`)
-
-    //       setProducts(data.products);
-    //       return data.products
-    //     } catch (error) {
-    //       console.log(`Something went wrong: ${error}`);
-    //     }
-    //   };
     const [loadImages, setLoadImages] = useState(false)
-
 
     useEffect(() => {
         setTimeout(() => {
             setLoadImages(true)
         }, 300);
     },[])
+    // var video2 = document.getElementById('secondVedeo');
+    // console.log(video2);
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     var video = document.getElementById('myVideo');
+    //     video.play();
+    //   });
 
   return (
-    <div className="page_wrapper">
+    <div className="page_wrapper" id='mainpage'>
         <div className='main_page page'>
             <div className="best_care container">
                 <div className="firstPart">
-                    <div>
+                    <div className='firstPart_top'>
                         {width <= 600 && <div className="mainPhoto">
                             <img src="./img/phone_main_page.jpg" alt="" 
                                 decoding='async'
@@ -89,20 +80,21 @@ const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsel
             </div>
             <div className="goal_wrapper">
                 {width > 600 && <div className="goal">
-                    <div>
+                    <div className='firstDiv'>
                         {ukrLang ? <p>Мета нашої косметики - пришвидшити</p> :
                         <p>The purpose of our cosmetics is to speed up</p>}
                         <img src="./img/goal_img.png" alt="" />
                     </div>
-                    <div>
+                    <div className='centerDiv'>
                         {ukrLang ? <p>ріст війок та брів</p> :
                         <p>growth of eyelashes and eyebrows</p>}
                         <img src="./img/goal_img2.png" alt="" />
                         {ukrLang ? <p>підкреслити природню</p> :
                         <p>emphasize the natural</p>}
                     </div>
-                    <div>
-                        <p>beauty.</p>
+                    <div  className='lastWord'>
+                        {ukrLang ? <p>красу.</p> :
+                        <p>beauty.</p>}
                     </div>
                 </div>}
                 {width <= 600 && <div className="goal">
@@ -112,11 +104,16 @@ const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsel
             </div>
             <div className="bestSellers">
                 {ukrLang ? <h1>НАШІ БЕСТСЕЛЕРИ</h1> : <h1>OUR BEST SELLERS</h1>}
-                {width <= 1200 && <MainSlider manufactures={bestsellerProucts} setOpenedManufacture={setOpenedManufacture} width={width}/>}
+                {width <= 1200 && <MainSlider manufactures={bestsellerProucts} setOpenedManufacture={setOpenedManufacture} width={width} ukrLang={ukrLang}/>}
                 {width > 1200 && <div className="cardItems_wrapper">
-                {width > 1200 && <img src="./img/bestSeller_1.jpg" alt="" />}
+                {width > 1200 && 
+                    <div className="videoWrapper" id='firstVideoWrapper'>
+                        <video width="1000" height="553" autoPlay loop playsInline muted id='secondVedeo'>
+                            <source src={video} type="video/mp4" />
+                        </video>
+                    </div>}
                     {bestsellerProucts?.map((item) => (
-                        <CardItem item={item} likes={false}/>
+                        <CardItem key={item?._id} item={item} likes={false} isUaLocation={isUaLocation} price={true} ukrLang={ukrLang}/>
                     )) }
                     <div className="more_wrapper">
                         <Link to='catalogue'>
@@ -126,21 +123,26 @@ const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsel
                             </div>
                         </Link>
                     </div>
-                    {width > 1200 && <img src="./img/bestSeller_2.jpg" alt="" />}
+                    {width > 1200 && 
+                        <div className="videoWrapper" id='secondVideoWrapper'>
+                            <video width="1000" height="553" autoPlay loop playsInline muted id='secondVedeo'>
+                                <source src={video2} type="video/mp4" />
+                            </video>
+                        </div> }
                 </div>}
             </div>
             <div className="questions">
                 <div className="questions_wrapper">
-                    {width <= 600 && <h1>запитання, які часто цікавлять клієнтів </h1>}
+                    {width <= 600 && <h1>{ukrLang ? 'запитання, які часто цікавлять клієнтів' : 'Frequently Asked Questions'}</h1>}
                     <img src="./img/questions_img.jpg" alt="" />
                     <div className="questions_part">
-                        {width > 600 && <h1>запитання, які часто цікавлять клієнтів </h1>}
+                        {width > 600 && <h1>{ukrLang ? 'запитання, які часто цікавлять клієнтів' : 'Frequently Asked Questions'}</h1>}
                         <ul>
                             <li>
                                 <div
                                     onClick={() => setFirstQOpened(!firstQOpened)}
                                 >
-                                    <p>Де виготовляють вашу продукцію?</p> 
+                                    <p>{ukrLang ? 'Де виготовляють вашу продукцію?' : 'Where is your product manufactured?'}</p> 
                                     <div className={firstQOpened ? "arrow_questions_closed arrow_questions" : "arrow_questions"}>
                                         <img src="./img/arrow_questions.svg" alt="" />
                                     </div>
@@ -154,7 +156,7 @@ const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsel
                                 <div
                                     onClick={() => setsecondQOpened(!secondQOpened)}
                                 >
-                                    <p>Як швидко діє засіб?</p> 
+                                    <p>{ukrLang ? 'Як швидко діє засіб?' : 'How quickly does the product work?'}</p> 
                                     <div className={secondQOpened ? "arrow_questions_closed arrow_questions" : "arrow_questions"}>
                                         <img src="./img/arrow_questions.svg" alt="" />
                                     </div>
@@ -168,7 +170,7 @@ const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsel
                                 <div
                                     onClick={() => setThirdQOpened(!thirdQOpened)}
                                 >
-                                    <p>чи продаєте ви продукцію оптом?</p> 
+                                    <p>{ukrLang ? 'чи продаєте ви продукцію оптом?' : 'Do you sell your products wholesale?'}</p> 
                                     <div className={thirdQOpened ? "arrow_questions_closed arrow_questions" : "arrow_questions"}>
                                         <img src="./img/arrow_questions.svg" alt="" />
                                     </div>
@@ -182,13 +184,13 @@ const Main = ({ukrLang, setOpenedManufacture, likesItems, setLikesItems, bestsel
                                 <div
                                     onClick={() => setFourthQOpened(!fourthQOpened)}
                                 >
-                                    <p>чи ви проводите тести на тваринах?</p> 
+                                    <p>{ukrLang ? 'чи ви проводите тести на тваринах?' : 'Do you conduct animal testing?'}</p> 
                                     <div className={fourthQOpened ? "arrow_questions_closed arrow_questions" : "arrow_questions"}>
                                         <img src="./img/arrow_questions.svg" alt="" />
                                     </div>
                                 </div>
                                 <div className={fourthQOpened ? "dropDownList_closed dropDownList_text" : "dropDownList_text"}>
-                                    <p>Так, ми пропонуємо співпрацю з нами в якості покупця товарів оптом. Ви купуєте продукцію за оптовою ціною в нас, а в своєму магазині продаєте за роздрібною ціною, яку визначаєте ви. </p>
+                                    <p>Так</p>
                                 </div>
                                 <div className="outline" />
                             </li>

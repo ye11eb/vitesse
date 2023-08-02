@@ -1,12 +1,9 @@
-$secondFont: 'Neutral Face', sans-serif;
-$mainFont: 'Montserrat', sans-serif;
-
 .product{
     .product_top{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin-top: 40px;
+        margin-top: 80px;
 
         & > div{
             width: 100%;
@@ -87,23 +84,20 @@ $mainFont: 'Montserrat', sans-serif;
             align-items: flex-start;
             justify-content: space-between;
             h1{
-                font-family: $mainFont;
                 font-weight: 400;
                 font-size: 34px;
                 color: #000000;
-                // text-transform: uppercase;
+                text-transform: uppercase;
                 margin-block-start: 0em !important;
                 margin-block-end: 0em !important;
             }
             > p{
-                font-family: $mainFont;
                 font-style: normal;
                 font-weight: 400;
                 font-size: 20px;
                 line-height: 24px;
                 letter-spacing: 0.015em;
-                font-variant: small-caps;
-
+                font-variant:all-petite-caps;
                 color: #000000;
             }
 
@@ -116,13 +110,12 @@ $mainFont: 'Montserrat', sans-serif;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    font-family: $mainFont;
                     font-style: normal;
                     font-weight: 400;
                     font-size: 20px;
                     line-height: 24px;
                     letter-spacing: 0.015em;
-                    font-variant: small-caps;
+                    font-variant:all-petite-caps;
                     color: #000000;
                     .toPickRound{
                         width: 20px;
@@ -142,12 +135,11 @@ $mainFont: 'Montserrat', sans-serif;
             }
 
             .price{
-                font-family: $mainFont;
                 font-weight: 400;
                 font-size: 28px;
                 line-height: 34px;
                 letter-spacing: 0.015em;
-                font-variant: small-caps;
+                font-variant: all-petite-caps;
             }
 
             .btn{
@@ -202,7 +194,6 @@ $mainFont: 'Montserrat', sans-serif;
                 align-items: flex-end;
                 justify-content: space-between;
                 & > p{
-                font-family: $mainFont;
                 font-weight: 500;
                 font-size: 24px;
                 line-height: 29px;
@@ -251,7 +242,6 @@ $mainFont: 'Montserrat', sans-serif;
                 max-height: 300px;
                 overflow: hidden;
                 & > p {                  
-                    font-family: $mainFont;
                     font-weight: 400;
                     font-size: 16px;
                     line-height: 20px;
@@ -301,10 +291,6 @@ $mainFont: 'Montserrat', sans-serif;
                     width: 211px;
                     height: 314px;
                     }
-                    .like_btn{
-                        width: 18px;
-                        height: 18px;
-                    }
                 }
             }
     
@@ -343,12 +329,11 @@ $mainFont: 'Montserrat', sans-serif;
                 }
     
                 .price{
-                    font-family: $mainFont;
                     font-weight: 400;
                     font-size: 15px;
                     line-height: 19px;
                     letter-spacing: 0.015em;
-                    font-variant: small-caps;
+                    font-variant:all-petite-caps;
                 }
     
                 .btn{
@@ -453,21 +438,14 @@ $mainFont: 'Montserrat', sans-serif;
                 }
                 .pickedImg {
                     .prodImg{
-                    width: 199px;
-                    height: 298px;
-                    }
-                    .like_btn{
-                        position: absolute;
-                        top: 2%;
-                        right: 4%;
-                        width: 14px;
-                        height: 14px;
+                        width: 199px;
+                        height: 298px;
                     }
                 }
             }
     
             .product_top_text{
-                height: 300px;
+                gap: 10px;
                 h1{
                     font-size: 22px;
                     padding-top: 20px;
@@ -482,12 +460,11 @@ $mainFont: 'Montserrat', sans-serif;
                     flex-direction: row;
                     gap: 33px;
                     p{
-                        font-family: 'Montserrat';
                         font-weight: 400;
                         font-size: 11px;
                         line-height: 13px;
                         letter-spacing: 0.015em;
-                        font-variant: small-caps;
+                        font-variant: all-petite-caps;
                     }
                 }
     
@@ -532,7 +509,6 @@ $mainFont: 'Montserrat', sans-serif;
                     align-items: flex-end;
                     justify-content: space-between;
                     & > p{
-                        font-family: $mainFont;
                         font-weight: 500;
                         font-size: 14px;
                         line-height: 17px;

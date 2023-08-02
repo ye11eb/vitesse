@@ -12,6 +12,32 @@
     }
 }
 
+.empty_cart{
+    display: flex;
+    height: 340px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    h1{
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 29px;
+        letter-spacing: 0.015em;
+        text-transform: uppercase;
+    }
+    p{
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.015em;
+        font-variant: all-petite-caps;
+    }
+    .btn{
+        width: 359px;
+    }
+}
+
 @media (max-width: 1200px) {
     .likes{
         .mainLikes{

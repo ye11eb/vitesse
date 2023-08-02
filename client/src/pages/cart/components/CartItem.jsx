@@ -1,21 +1,26 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Axios from'../../../utils/axios'
 
-const CartItem = ({item, changeQuantityCartItem, DelleteCartItem, s }) => {
+const CartItem = ({item, changeQuantityCartItem, DelleteCartItem, s , isUaLocation}) => {
     const [fetchedItem ,setFetchedItem] = useState()
+    const [itemTitle ,setItemTitle] = useState('')
+    
+    const [width, setWidth] = useState(window.innerWidth)
+    function handleWindowSizeChange() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleWindowSizeChange);
 
     const FetchCartItem = async() => {
         try {
             const { data } = await Axios.get(`/productsRoute/product/:${item._id}`);
             const product = data.product
             product.quantity = 1
-            // setFetchedItemsPrice([...fetchedItemsPrice, {'_id' : product._id, 'price' : product.price}])
-            // if(data?.product) {
             setFetchedItem(product)
-                // console.log(data.product);
-            // }
-            // console.log(data);
+            if (width<600) {
+                setItemTitle(product.title.slice(0, 8)+'...')
+            }
         } catch (error) {
         console.log(`Something went wrong: ${error}`);
         }
@@ -32,7 +37,7 @@ const CartItem = ({item, changeQuantityCartItem, DelleteCartItem, s }) => {
     <div className="cartItem">
     <img src={fetchedItem?.images[0]} alt="" />
     <div className='cartItemInfo'>
-        <p className="name">{fetchedItem?.title}</p>
+        <p className="name">{itemTitle}</p>
         <p className="capacity">{fetchedItem?.capacity}<span>{fetchedItem?.capacityValue}</span></p>
     </div>
     <div className='changeQuantity'>
@@ -50,8 +55,8 @@ const CartItem = ({item, changeQuantityCartItem, DelleteCartItem, s }) => {
         </div>
     </div>
     <p className="price">
-        {fetchedItem?.price}
-        <span>{fetchedItem?.priceValue}</span>
+        {isUaLocation ? fetchedItem?.price : fetchedItem?.priceEng}
+        <span>{isUaLocation ? '₴' : '$'}</span>
     </p>
     <div className="delete"
     onClick={() => DelleteCartItem(item)}

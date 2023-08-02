@@ -5,25 +5,7 @@ import './filter.scss'
 import Axios from'../../../utils/axios'
 
 
-const Filter = ({ openedFilterAnim, ukrLang, setFilterOpt}) => {
-    const [filterOpt, setFilterOpts] = useState()
-
-
-    const fetchProduct = async () => {
-        try {
-          const { data } = await Axios.get(`/productsRoute/filterOpts/:${ukrLang ? 'type' : 'typeEng'}`);
-          console.log(data);
-          setFilterOpts(data.distinctValues)
-          return data
-
-        } catch (error) {
-          console.log(`Something went wrong: ${error}`);
-        }
-      };
-
-      useEffect(() => {
-        fetchProduct()
-      },[])
+const Filter = ({ openedFilterAnim, ukrLang, setFilterOpt, filterOpts}) => {
 
   return (
       <div className={openedFilterAnim ? "filter_wrapper filter_wrapper_close" : "filter_wrapper "}>
@@ -32,15 +14,16 @@ const Filter = ({ openedFilterAnim, ukrLang, setFilterOpt}) => {
           <div className="line secondLine" />
         </div>
           <div className="filter_inner">
-            <h2>ВИД ТОВАРУ</h2>
+            <h2>{ukrLang ? 'ВИД ТОВАРУ' : 'PRODUCT TYPE'}</h2>
             <div className="filterOpts">
                     <p 
-                        onClick={() => setFilterOpt('all')}                    
+                        onClick={() => setFilterOpt({typeEng: 'all'})}                    
                     >{ukrLang ? 'Усе' : 'All'}</p>
-                {filterOpt?.map((opt) => (
-                    <p 
-                        onClick={() => setFilterOpt(opt)}                    
-                    >{opt}</p>
+                {filterOpts?.map((opt) => (
+                    <p  
+                      key={opt}
+                      onClick={() => setFilterOpt(opt)}                    
+                    >{ukrLang ? opt.type : opt.typeEng}</p>
                 )) }
             </div>
         </div>

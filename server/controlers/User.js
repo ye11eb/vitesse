@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 //Register user
 export const Register = async (req, res) => {
   try {
-    const { name, surname, email, state, street, post, number, houseNum, password} = req.body.userData
+    const { name, surname, email, country, street, post, number, houseNum, password} = req.body.userData
 
     const isUsed = await User.findOne({email})
 
@@ -23,7 +23,7 @@ export const Register = async (req, res) => {
       name,
       surname,
       email,
-      state,
+      country,
       street,
       post,
       number,
@@ -50,7 +50,6 @@ export const Register = async (req, res) => {
 // login user
 export const Login = async (req, res) => {
   try {
-    // console.log(req.body);
     const { email, password } = req.body.userData
     const user = await User.findOne({ email });
 
@@ -60,11 +59,6 @@ export const Login = async (req, res) => {
         status: 404,
       });
     }
-
-    // console.log(user);
-
-    // console.log(password);
-    // console.log(user.password);
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password)
 
@@ -137,172 +131,47 @@ export const GetMe = async (req, res) => {
   }
 }
 
-// //getUserInfo
-// export const getUserInfo = async (req, res) => {
-//   try {
-//     const user = await User.findById(req.userID)
+export const updateInfo = async (req, res) => {
 
-//     if(!user){
-//       return res.json({ message: 'something went wrong' })
-//     }
+  const data = req.body.userData;
+  // console.log(req);
+  // function getIdFromUrl(url) {
+  //   const parts = url.split('/');
+  //   const idWithColon = parts[parts.length - 1];
+  //   const id = idWithColon.replace(':', ''); // замінити ":" на порожній рядок
+  //   return (id);
+  // }
 
+  // const reqId = getIdFromUrl(req.url)
 
+  try {
+    const user = await User.findById(data._id);
 
-//     return res.json( user )
+      if (user) {
+        user._id = data._id,
+        user.name = data.name,
+        user.surname = data.surname,
+        user.email = data.email,
+        user.state = data.state,
+        user.city = data.city,
+        user.region = data.region,
+        user.number = data.number,
+        user.email = data.email,
+        user.country = user.country,
+        user.password = user.password,
+        user.Orders = user.Orders
+      };
+        
 
-//   }
-//   catch (error) {
-//     res.json({
-//       message: "no permision"
-//     })
+    await user.save()
+
+    res.json({user})
+  }
+  catch (error) {
+    console.log(error);
+    res.json({
+      message: `no permision ${error}`
+    })
     
-//   }
-// }
-
-// //deliveryInfo
-// export const deliveryInfo = async (req, res) => {
-//   try {
-//     const { firstName, secondName, number, adress1, adress2, country, city, state, zipcode } = req.body
-//     const user = await User.findById(req.userID)
-
-//     if(!user){
-//       return res.json({ message: 'something went wrong' })
-//     }
-
-//     user.firstName = firstName
-
-//     user.secondName = secondName
-    
-//     user.number = number
-
-//     user.adress1 = adress1
-
-//     user.adress2 = adress2
-
-//     user.country = country
-
-//     user.city = city
-
-//     user.state = state
-
-//     user.zipcode = zipcode
-
-
-//     await user.save()
-
-    
-//     res.json({user, status: true})
-//   }
-//   catch (error) {
-//     res.json({
-//       message: "${error}",
-//       status: false,
-//     })
-    
-//   }
-// }
-
-
-// //login user
-// export const changeMail = async (req, res) => {
-//   try {
- 
-//     const { email } = await req.body
-//     console.log(email);
-//     const user = await User.findById(req.userID)
-
-//     if(!user){
-//       return res.json({
-//         message: 'this user is not exist',
-//         status: false,
-//       })
-//     }
-
-//     const isUsed = await User.findOne({email})
-
-//     if(isUsed){
-//       return res.json({
-//         message: "this email alredy used",
-//         status: false,
-//       })
-//     }
-
-//     // const isPasswordCorrect = await bcrypt.compare(password, user.password)
-
-//     // if(!isPasswordCorrect) {
-//     //   res.json({
-//     //     message:"incorrect password"
-//     //   })
-//     // }
-
-//     // const token = jwt.sign({
-//     //   id: user._id,
-//     //   },process.env.JWT_SECRET,
-//     //   {expiresIn: '30d'},
-//     // )
-
-//     user.email = await email
-
-//     console.log(user.email);
-
-//     console.log(user);
-
-//     await user.save()
-
-//     if(user) {
-//       res.json({user, message: 'succes', status: true})
-//     }
-    
-//   }
-//   catch (error) {
-//     console.log(error);
-//     res.json({message: `error while login:${error}`})
-//   }
-// }
-
-
-// export const verifyPass = async (req, res) => {
-//   try {
-
-//     const {token, password} = req.body
-//     let userID = 0
-//     console.log(req.body);
-
-//     jwt.verify(token, process.env.JWT_SECRET, function(err, decoded) {
-//       if (err) {
-//         console.log('Invalid token:', err);
-//       } else {
-//         console.log('Decoded token:', decoded);
-//         userID = decoded
-//       }
-//     });
-
-
-//     const user = await User.findById(userID.id)
-
-//     if(!user){
-//       return res.json({
-//         message: 'this user is not exist',
-//         status: false,
-//       })
-//     }
-
-//     const isPasswordCorrect = await bcrypt.compare(password, user.password)
-
-//     if(!isPasswordCorrect) {
-//       res.json({
-//         message:"incorrect password",
-//         isPasswordCorrect,
-//         status: false,
-//       })
-//     }
-
-//     if(isPasswordCorrect && user) {
-//       res.json({user, message: 'correct', status: true})
-//     }
-    
-//   }
-//   catch (error) {
-//     res.json({message: `error while login:${error}`, status: false})
-//   }
-// }
+  }
+}

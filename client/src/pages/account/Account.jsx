@@ -16,7 +16,6 @@ export default function Account({ukrLang}) {
         try {
           const response = await Axios.get(`/usersRoute/user/:${localStorage.getItem("userId")}`);
           const data = response.data;
-          console.log(data);
           if (data.token) {
             setUser(data.user)
             localStorage.setItem("token", data.token);
@@ -50,21 +49,18 @@ export default function Account({ukrLang}) {
                 {ukrLang ? (<p>Корзина</p>) : (<p>Cart</p>)}
             </div>
             <div className="accountWrapper">
-                <h1>ОСОБИСТИЙ КАБІНЕТ</h1>
+                {ukrLang ? <h1>ОСОБИСТИЙ КАБІНЕТ</h1> : <h1>PERSONAL ACCOUNT</h1>}
                 <div className="innerPageWrapper">
                     <div className="titlesWrapper">
                         <p className={innerPage === 1 ? "innerPageTitle active" :  "innerPageTitle"}
                             onClick={() => setInnerPage(1)}
-                        >Контактна інформація</p>
+                        >{ukrLang ? 'Контактна інформація' : 'Contact information' }</p>
                         <p className={innerPage === 2 ? "innerPageTitle active" :  "innerPageTitle"}
                             onClick={() => setInnerPage(2)}
-                        >Мої замовлення</p>
-                        {/* <p className={innerPage === 3 ? "innerPageTitle active" :  "innerPageTitle"}
-                            onClick={() => setInnerPage(3)}
-                        >Змінити пароль</p> */}
+                        >{ukrLang ? 'Мої замовлення' : 'My orders' }</p>
                     </div>
-                    {innerPage === 1 && user && <ContactInfo user={user}/>}
-                    {innerPage === 2 && user && <Ordersinfo user={user}/>}
+                    {innerPage === 1 && user && <ContactInfo user={user} ukrLang={ukrLang}/>}
+                    {innerPage === 2 && user && <Ordersinfo user={user} ukrLang={ukrLang}/>}
 
                 </div>
             </div>

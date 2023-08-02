@@ -9,7 +9,7 @@
     padding: 29px;
     background-color: rgb(255, 255, 255);
     position: absolute;
-    top: 110px;
+    top: 260px;
     left: 0;
     width: 320px;
     min-height: 238px;
@@ -19,7 +19,6 @@
         min-height: 200px;
         h2{
             cursor: pointer;
-            font-family: 'Montserrat';
             font-style: normal;
             font-weight: 500;
             position: relative;
@@ -39,13 +38,12 @@
             margin-top: 10px;
             p{
                 cursor: pointer;
-                font-family: 'Montserrat';
                 font-style: normal;
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 20px;
                 letter-spacing: 0.015em;
-                font-variant: small-caps;
+                font-variant: all-petite-caps;
                 color: #6B6B6B;
                 &:hover{
                     color: black;
@@ -75,4 +73,18 @@
 
 .filter_wrapper_close{
     animation: .2s filter_wrapper_closed !important;
+}
+
+
+@media (max-width: 1200px ) {
+    .filter_wrapper{
+        top: 150px;
+        left: 5%;
+    }
+}
+
+@media (max-width: 600px ) {
+    .filter_wrapper{
+        top: 120px;
+    }
 }

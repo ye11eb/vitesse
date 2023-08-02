@@ -1,20 +1,19 @@
-$secondFont: 'Neutral Face', sans-serif;
-$mainFont: 'Montserrat', sans-serif;
-
 .card_wrapper{
     width: 372px;
     height: 553px;
     position: relative;
     display: flex;
     flex-direction: column;
+    transition: width .5s;
     justify-content: end;
     padding: 50px 0;
     align-items: center;
     border: 1px solid #000000;
     img{
         background-color:#f9e4e4;
-        width: 44%;
+        // width: 44%;
         height: 70%;
+        // transition: all 0.3s;
     }
     .like_btn{
         position: absolute;
@@ -22,7 +21,7 @@ $mainFont: 'Montserrat', sans-serif;
         right: 5%;
         height: 40px;
         width: 40px;
-        transition: all .3s;
+        transition: background-image .3s;
         background-image: url('../../../../public/img/like_button.svg');
     }
 
@@ -32,7 +31,7 @@ $mainFont: 'Montserrat', sans-serif;
         right: 5%;
         height: 40px;
         width: 40px;
-        transition: all .3s;
+        transition: background-image .3s;
         background-image: url('../../../../public/img/like_button_liked.svg');
     }
 
@@ -43,7 +42,7 @@ $mainFont: 'Montserrat', sans-serif;
         right: 5%;
         height: 40px;
         width: 40px;
-        transition: all .3s;
+        transition: background-image .3s;
         background-image: url('../../../../public/img/like_button_liked.svg')
     }
 
@@ -64,27 +63,52 @@ $mainFont: 'Montserrat', sans-serif;
     }
 
     h2{
-        font-family: $mainFont;
         font-weight: 400;
         font-size: 20px;
         line-height: 24px;
         letter-spacing: 0.015em;
         text-transform: uppercase;
-        font-variant: small-caps;
+        font-variant: all-petite-caps;
     }
 
     & > span, p{
-        font-family: $mainFont;
         font-weight: 400;
         font-size: 16px;
         line-height: 20px;
         letter-spacing: 0.015em;
-        font-variant: small-caps;
+        font-variant: all-petite-caps;
     }
 
     .btn{
         width: 204px;
         margin-top: 20px;
+    }
+}
+
+.willBeeDelleted{
+    margin-right: -42px !important;
+    visibility: hidden;
+    animation: hideCard .5s;
+    .btn{
+        border: transparent;
+        visibility: hidden;
+    }
+    & *{
+        visibility: hidden; 
+    }
+}
+
+@keyframes hideCard {
+    0%{
+        width: 372px;
+    }
+    70%{
+        right: 20px !important;
+        width: 0px ;
+    }
+    100%{
+        right: 20px !important;
+        width: 0px ;
     }
 }
 
